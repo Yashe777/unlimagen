@@ -81,7 +81,7 @@ COLOR_DESCRIPTIONS = {
     'monochrome': 'black and white, classic'
 }
 
-def create_logo_prompt(company_name, style, industry, color_scheme, variation=0):
+def create_logo_prompt(company_name, style, industry, color_scheme, variation=0, background='natural'):
     """Create optimized prompt for AI logo generation with variations"""
     
     style_desc = STYLE_DESCRIPTIONS.get(style, 'modern, professional')
@@ -100,10 +100,19 @@ def create_logo_prompt(company_name, style, industry, color_scheme, variation=0)
     
     variation_text = variations[variation % len(variations)]
     
+    # Background descriptions based on user choice
+    background_styles = {
+        'white': 'white background, centered, clean, simple, isolated on white',
+        'natural': 'natural background, realistic environment, atmospheric, detailed scene',
+        'creative': 'artistic background, creative composition, dynamic, visually striking'
+    }
+    
+    background_desc = background_styles.get(background, background_styles['natural'])
+    
     # Add random seed to URL for more variation
     seed = random.randint(1, 999999)
     
-    prompt = f"professional logo design for {company_name}{industry_context}, {style_desc}, {color_desc}, {variation_text}, flat design, vector art style, icon symbol, white background, centered, clean, high quality, simple memorable design, no text, no letters, seed {seed}"
+    prompt = f"{company_name}{industry_context}, {style_desc}, {color_desc}, {variation_text}, {background_desc}, high quality, detailed, professional, seed {seed}"
     
     return prompt
 
@@ -274,6 +283,7 @@ def generate_free_ai():
     color_scheme = data.get('color_scheme', 'professional')
     count = int(data.get('count', 3))
     model = data.get('model', 'pollinations')  # 'pollinations' or 'wan25'
+    background = data.get('background', 'natural')  # background style
     
     logos = []
     errors = []
@@ -284,8 +294,8 @@ def generate_free_ai():
     
     for i in range(count):
         try:
-            # Create prompt with variation
-            prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i)
+            # Create prompt with variation and background style
+            prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
             
             # Generate unique seed for this logo
             seed = random.randint(1, 999999)
