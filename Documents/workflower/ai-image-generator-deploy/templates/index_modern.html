@@ -64,6 +64,12 @@
             gap: 20px;
         }
 
+        @media (max-width: 1024px) {
+            .main-area {
+                display: contents;
+            }
+        }
+
         .input-card {
             background: #1a1a1a;
             padding: 25px;
@@ -531,11 +537,26 @@
         @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
             }
 
             .sidebar {
                 position: relative;
                 top: 0;
+                order: 2;
+            }
+
+            .main-area {
+                order: 1;
+            }
+
+            .input-card {
+                order: 1;
+            }
+
+            .results-card {
+                order: 3;
             }
 
             .radio-grid {
