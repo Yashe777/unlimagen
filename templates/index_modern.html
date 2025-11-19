@@ -64,6 +64,12 @@
             gap: 20px;
         }
 
+        @media (max-width: 1024px) {
+            .main-area {
+                display: contents;
+            }
+        }
+
         .input-card {
             background: #1a1a1a;
             padding: 25px;
@@ -531,11 +537,26 @@
         @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
             }
 
             .sidebar {
                 position: relative;
                 top: 0;
+                order: 2;
+            }
+
+            .main-area {
+                order: 1;
+            }
+
+            .input-card {
+                order: 1;
+            }
+
+            .results-card {
+                order: 3;
             }
 
             .radio-grid {
@@ -689,6 +710,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="option-group">
+                            <label>Background Style</label>
+                            <div class="radio-grid aspect-ratio-grid">
+                                <div class="radio-option">
+                                    <input type="radio" id="bg-natural" name="background" value="natural" checked>
+                                    <label for="bg-natural">Natural Scene</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="bg-white" name="background" value="white">
+                                    <label for="bg-white">White/Clean</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="bg-creative" name="background" value="creative">
+                                    <label for="bg-creative">Creative</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -760,6 +799,13 @@
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
+            <div class="footer-section">
+                <h3>Support Us</h3>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 15px;">Help keep Unlimagen 100% free for everyone! ☕</p>
+                <a href="https://paypal.me/YASSINEOUCHANE" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%); color: #1a1a1a; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s;">
+                    ❤️ Donate via PayPal
+                </a>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Unlimagen. All rights reserved.</p>
@@ -810,6 +856,7 @@
             const model = document.querySelector('input[name="model"]:checked').value;
             const imageType = document.querySelector('input[name="image-type"]:checked').value;
             const aspect = document.querySelector('input[name="aspect"]:checked').value;
+            const background = document.querySelector('input[name="background"]:checked').value;
             const quality = 'high'; // Default to high quality
 
             // Build enhanced prompt based on settings
@@ -843,6 +890,7 @@
                 industry: '',
                 style: imageType,
                 color_scheme: quality,
+                background: background,
                 count: 1,
                 model: model
             };
