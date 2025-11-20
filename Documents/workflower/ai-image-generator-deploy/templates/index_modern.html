@@ -641,6 +641,11 @@
             div[style*="grid-template-columns: 1fr 1fr"] {
                 grid-template-columns: 1fr !important;
             }
+
+            #reviews-container {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6px !important;
+            }
         }
     </style>
 </head>
@@ -871,7 +876,7 @@
 
             <!-- Recent Reviews (Very Compact) -->
             <div style="margin-top: 20px;">
-                <div id="reviews-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                <div id="reviews-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
                     <!-- Reviews will be loaded here -->
                 </div>
             </div>
@@ -1166,20 +1171,20 @@
                 return;
             }
 
-            // Show latest 6 reviews
-            const latestReviews = reviews.slice(0, 6);
+            // Show latest 3 reviews on mobile, 6 on desktop
+            const reviewCount = window.innerWidth <= 768 ? 3 : 6;
+            const latestReviews = reviews.slice(0, reviewCount);
             container.innerHTML = latestReviews.map(review => {
                 const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
                 const date = new Date(review.date);
                 const timeAgo = getTimeAgo(date);
                 
+                const isMobile = window.innerWidth <= 768;
                 return `
-                    <div style="background: #2a2a2a; padding: 15px; border-radius: 8px; border: 1px solid #3a3a3a;">
-                        <div style="color: #FFD700; font-size: 16px; margin-bottom: 5px;">${stars}</div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="color: #ffffff; font-weight: 600; font-size: 14px;">${escapeHtml(review.name)}</div>
-                            <div style="color: #666; font-size: 11px;">${timeAgo}</div>
-                        </div>
+                    <div style="background: #2a2a2a; padding: ${isMobile ? '10px' : '15px'}; border-radius: ${isMobile ? '6px' : '8px'}; border: 1px solid #3a3a3a;">
+                        <div style="color: #FFD700; font-size: ${isMobile ? '14px' : '16px'}; margin-bottom: ${isMobile ? '3px' : '5px'};">${stars}</div>
+                        <div style="color: #ffffff; font-weight: 600; font-size: ${isMobile ? '11px' : '14px'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(review.name)}</div>
+                        ${isMobile ? '' : `<div style="color: #666; font-size: 11px; margin-top: 3px;">${timeAgo}</div>`}
                     </div>
                 `;
             }).join('');
