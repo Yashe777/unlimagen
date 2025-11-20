@@ -1177,9 +1177,11 @@
             container.innerHTML = latestReviews.map(review => {
                 const stars = '★'.repeat(review.rating);
                 return `
-                    <div style="flex: 1; background: #2a2a2a; padding: 12px 8px; border-radius: 6px; border: 1px solid #3a3a3a; text-align: center;">
-                        <div style="color: #FFD700; font-size: 14px; margin-bottom: 4px;">${stars}</div>
-                        <div style="color: #ffffff; font-weight: 600; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(review.name)}</div>
+                    <div style="flex: 1; background: #2a2a2a; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a3a;">
+                        <div style="color: #ffffff; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <span style="color: #a0a0a0; font-weight: 500;">${escapeHtml(review.name)}:</span>
+                            <span style="color: #FFD700; margin-left: 4px;">${stars}</span>
+                        </div>
                     </div>
                 `;
             }).join('');
