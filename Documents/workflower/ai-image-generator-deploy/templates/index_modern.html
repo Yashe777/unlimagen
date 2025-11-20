@@ -40,14 +40,14 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 80px 20px 40px;
             background: #0a0a0a;
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 30px;
+            grid-template-columns: 380px 1fr 180px;
+            gap: 25px;
             margin-top: 30px;
         }
 
@@ -104,9 +104,9 @@
 
         .top-animated-banner {
             background: #ffffff;
-            padding: 10px 0;
+            padding: 6px 0;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 5px rgba(0,0,0,0.08);
             position: relative;
         }
 
@@ -117,12 +117,12 @@
         }
 
         .top-scrolling-text span {
-            font-size: 15px;
+            font-size: 12px;
             font-weight: 600;
             color: #1a1a1a;
-            padding: 0 50px;
+            padding: 0 40px;
             display: inline-block;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         @keyframes scroll {
@@ -534,6 +534,36 @@
             color: #666;
         }
 
+        .ad-sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .ad-space {
+            /* Empty space for ads - no background or borders */
+            margin-bottom: 20px;
+            min-height: 250px;
+        }
+
+        @media (max-width: 1400px) {
+            .main-content {
+                grid-template-columns: 340px 1fr 160px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 300px 1fr;
+                gap: 20px;
+            }
+
+            .ad-sidebar {
+                display: none;
+            }
+        }
+
         @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -601,6 +631,17 @@
                 flex-direction: column;
             }
         }
+
+        /* Rating Section Mobile */
+        @media (max-width: 768px) {
+            section[style*="padding: 60px"] {
+                padding: 40px 15px !important;
+            }
+            
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -616,13 +657,13 @@
             <span>🎨 100% Free Forever</span>
             <span>🚀 No Sign Up Required</span>
             <span>💡 Unlimited Generations</span>
-            <span>⚡ Fast & Easy to Use</span>
+            <span>⚡ Easy to Use</span>
             <span>🌟 Transform Your Ideas Into Art</span>
             <span>✨ Create Stunning AI Images Instantly</span>
             <span>🎨 100% Free Forever</span>
             <span>🚀 No Sign Up Required</span>
             <span>💡 Unlimited Generations</span>
-            <span>⚡ Fast & Easy to Use</span>
+            <span>⚡ Easy to Use</span>
             <span>🌟 Transform Your Ideas Into Art</span>
         </div>
     </div>
@@ -777,8 +818,65 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Right Ad Sidebar -->
+            <div class="ad-sidebar">
+                <!-- Empty space for ads -->
+                <div class="ad-space" style="min-height: 600px;">
+                    <!-- Google AdSense code will go here -->
+                </div>
+
+                <div class="ad-space" style="min-height: 250px;">
+                    <!-- Google AdSense code will go here -->
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Rating Section -->
+    <section style="background: #1a1a1a; padding: 30px 20px; border-top: 1px solid #2a2a2a;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: #ffffff; font-size: 20px; margin-bottom: 3px;">⭐ Rate Us</h2>
+                <p style="color: #a0a0a0; font-size: 12px;">Quick feedback helps!</p>
+            </div>
+
+            <!-- Compact Rating -->
+            <div style="background: #2a2a2a; padding: 20px; border-radius: 10px; border: 1px solid #3a3a3a;">
+                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <!-- Rating Display -->
+                    <div style="text-align: center; padding-right: 15px; border-right: 1px solid #3a3a3a;">
+                        <div style="font-size: 36px; color: #FFD700; font-weight: 700;" id="avg-rating-display">4.8</div>
+                        <div style="font-size: 16px; color: #FFD700;">★★★★★</div>
+                        <p style="color: #a0a0a0; font-size: 11px; margin-top: 3px;"><span id="total-ratings">127</span> reviews</p>
+                    </div>
+                    
+                    <!-- Quick Rating -->
+                    <div style="flex: 1; min-width: 250px;">
+                        <div class="star-rating" id="star-rating" style="font-size: 28px; cursor: pointer; margin-bottom: 10px; text-align: center;">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="text" id="reviewer-name" placeholder="Name (optional)" style="width: 100%; padding: 6px 10px; background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 5px; color: #ffffff; font-size: 11px; margin-bottom: 8px;">
+                        <button id="submit-rating" style="width: 100%; padding: 8px; background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%); color: #1a1a1a; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer;">
+                            Submit
+                        </button>
+                        <p id="rating-message" style="margin-top: 8px; text-align: center; font-size: 11px; color: #4CAF50; display: none;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reviews (Very Compact) -->
+            <div style="margin-top: 20px;">
+                <div id="reviews-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <!-- Reviews will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -959,6 +1057,160 @@
             a.click();
             document.body.removeChild(a);
         }
+        // ===== RATING SYSTEM =====
+        let selectedRating = 0;
+        const stars = document.querySelectorAll('.star');
+        const submitBtn = document.getElementById('submit-rating');
+        const ratingMessage = document.getElementById('rating-message');
+
+        // Star rating interaction
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.dataset.rating);
+                updateStars(selectedRating);
+            });
+
+            star.addEventListener('mouseover', function() {
+                const rating = parseInt(this.dataset.rating);
+                updateStars(rating);
+            });
+        });
+
+        document.getElementById('star-rating').addEventListener('mouseleave', function() {
+            updateStars(selectedRating);
+        });
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.textContent = '★';
+                    star.style.color = '#FFD700';
+                } else {
+                    star.textContent = '☆';
+                    star.style.color = '#666';
+                }
+            });
+        }
+
+        // Submit rating
+        submitBtn.addEventListener('click', function() {
+            if (selectedRating === 0) {
+                ratingMessage.style.color = '#f44336';
+                ratingMessage.textContent = 'Please select a star rating!';
+                ratingMessage.style.display = 'block';
+                return;
+            }
+
+            const reviewerName = document.getElementById('reviewer-name').value || 'Anonymous';
+
+            // Get existing reviews from localStorage
+            let reviews = JSON.parse(localStorage.getItem('unlimagen_reviews') || '[]');
+            
+            // Add new review
+            const newReview = {
+                rating: selectedRating,
+                name: reviewerName,
+                date: new Date().toISOString()
+            };
+            
+            reviews.unshift(newReview);
+            
+            // Keep only last 50 reviews
+            if (reviews.length > 50) {
+                reviews = reviews.slice(0, 50);
+            }
+            
+            localStorage.setItem('unlimagen_reviews', JSON.stringify(reviews));
+
+            // Show success message
+            ratingMessage.style.color = '#4CAF50';
+            ratingMessage.textContent = '✅ Thank you for your feedback!';
+            ratingMessage.style.display = 'block';
+
+            // Reset form
+            selectedRating = 0;
+            updateStars(0);
+            document.getElementById('reviewer-name').value = '';
+
+            // Update display
+            updateRatingDisplay();
+            loadReviews();
+
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                ratingMessage.style.display = 'none';
+            }, 3000);
+        });
+
+        // Load and display reviews
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('unlimagen_reviews') || '[]');
+            const container = document.getElementById('reviews-container');
+            
+            if (reviews.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+                        <p style="font-size: 18px;">No reviews yet. Be the first to leave a review! ⭐</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Show latest 6 reviews
+            const latestReviews = reviews.slice(0, 6);
+            container.innerHTML = latestReviews.map(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                const date = new Date(review.date);
+                const timeAgo = getTimeAgo(date);
+                
+                return `
+                    <div style="background: #2a2a2a; padding: 15px; border-radius: 8px; border: 1px solid #3a3a3a;">
+                        <div style="color: #FFD700; font-size: 16px; margin-bottom: 5px;">${stars}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #ffffff; font-weight: 600; font-size: 14px;">${escapeHtml(review.name)}</div>
+                            <div style="color: #666; font-size: 11px;">${timeAgo}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update rating statistics
+        function updateRatingDisplay() {
+            const reviews = JSON.parse(localStorage.getItem('unlimagen_reviews') || '[]');
+            
+            if (reviews.length === 0) return;
+
+            // Calculate average
+            const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+            const avg = (sum / reviews.length).toFixed(1);
+            
+            document.getElementById('avg-rating-display').textContent = avg;
+            document.getElementById('total-ratings').textContent = reviews.length;
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            if (seconds < 60) return 'Just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+            if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+            if (seconds < 604800) return Math.floor(seconds / 86400) + ' days ago';
+            return Math.floor(seconds / 604800) + ' weeks ago';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load reviews on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReviews();
+            updateRatingDisplay();
+        });
+
     </script>
 </body>
 </html>
