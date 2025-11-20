@@ -643,8 +643,16 @@
             }
 
             #reviews-container {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 6px !important;
+                gap: 5px !important;
+            }
+
+            #more-reviews {
+                padding: 6px 10px !important;
+                font-size: 11px !important;
+            }
+
+            #more-reviews > div:first-child {
+                font-size: 11px !important;
             }
         }
     </style>
@@ -869,12 +877,12 @@
             </div>
 
             <!-- 3 Latest Reviews + More Count -->
-            <div style="display: flex; gap: 8px; align-items: center;">
-                <div id="reviews-container" style="display: flex; gap: 8px; flex: 1;">
+            <div style="display: flex; gap: 6px; align-items: stretch; overflow-x: auto;">
+                <div id="reviews-container" style="display: flex; gap: 6px; flex: 1; min-width: 0;">
                     <!-- 3 reviews will be loaded here -->
                 </div>
-                <div id="more-reviews" style="background: #2a2a2a; padding: 12px 15px; border-radius: 6px; border: 1px solid #3a3a3a; text-align: center; white-space: nowrap;">
-                    <div style="color: #FFD700; font-size: 14px; font-weight: 700;">+<span id="more-count">1.1k</span></div>
+                <div id="more-reviews" style="background: #2a2a2a; padding: 8px 12px; border-radius: 6px; border: 1px solid #3a3a3a; text-align: center; white-space: nowrap; flex-shrink: 0;">
+                    <div style="color: #FFD700; font-size: 13px; font-weight: 700;">+<span id="more-count">1.1k</span></div>
                     <div style="color: #666; font-size: 9px;">more</div>
                 </div>
             </div>
@@ -1177,7 +1185,7 @@
             container.innerHTML = latestReviews.map(review => {
                 const stars = '★'.repeat(review.rating);
                 return `
-                    <div style="flex: 1; background: #2a2a2a; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a3a;">
+                    <div style="flex: 1; min-width: 80px; background: #2a2a2a; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a3a;">
                         <div style="color: #ffffff; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             <span style="color: #a0a0a0; font-weight: 500;">${escapeHtml(review.name)}:</span>
                             <span style="color: #FFD700; margin-left: 4px;">${stars}</span>
