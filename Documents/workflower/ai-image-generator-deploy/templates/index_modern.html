@@ -860,7 +860,7 @@
                             <span class="star" data-rating="4">☆</span>
                             <span class="star" data-rating="5">☆</span>
                         </div>
-                        <input type="text" id="reviewer-name" placeholder="Name (optional)" style="width: 100%; padding: 6px 10px; background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 5px; color: #ffffff; font-size: 11px; margin-bottom: 8px;">
+                        <input type="text" id="reviewer-name" placeholder="Name (optional)" maxlength="30" style="width: 100%; padding: 5px 8px; background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 4px; color: #ffffff; font-size: 10px; margin-bottom: 6px; height: 28px;">
                         <button id="submit-rating" style="width: 100%; padding: 8px; background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%); color: #1a1a1a; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer;">
                             Submit
                         </button>
@@ -998,6 +998,16 @@
             results.style.display = 'none';
             loading.style.display = 'block';
             generateBtn.disabled = true;
+
+            // On mobile, scroll to results card
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.querySelector('.results-card').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 300);
+            }
 
             try {
                 const response = await fetch('/generate-free-ai', {
