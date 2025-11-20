@@ -838,46 +838,44 @@
         </div>
     </div>
 
-    <!-- Rating Section -->
-    <section style="background: #1a1a1a; padding: 30px 20px; border-top: 1px solid #2a2a2a;">
-        <div style="max-width: 700px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h2 style="color: #ffffff; font-size: 20px; margin-bottom: 3px;">⭐ Rate Us</h2>
-                <p style="color: #a0a0a0; font-size: 12px;">Quick feedback helps!</p>
-            </div>
-
-            <!-- Compact Rating -->
-            <div style="background: #2a2a2a; padding: 20px; border-radius: 10px; border: 1px solid #3a3a3a;">
-                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center;">
-                    <!-- Rating Display -->
-                    <div style="text-align: center; padding-right: 15px; border-right: 1px solid #3a3a3a;">
-                        <div style="font-size: 36px; color: #FFD700; font-weight: 700;" id="avg-rating-display">4.8</div>
-                        <div style="font-size: 16px; color: #FFD700;">★★★★★</div>
-                        <p style="color: #a0a0a0; font-size: 11px; margin-top: 3px;"><span id="total-ratings">127</span> reviews</p>
-                    </div>
-                    
-                    <!-- Quick Rating -->
-                    <div style="flex: 1; min-width: 250px;">
-                        <div class="star-rating" id="star-rating" style="font-size: 28px; cursor: pointer; margin-bottom: 10px; text-align: center;">
-                            <span class="star" data-rating="1">☆</span>
-                            <span class="star" data-rating="2">☆</span>
-                            <span class="star" data-rating="3">☆</span>
-                            <span class="star" data-rating="4">☆</span>
-                            <span class="star" data-rating="5">☆</span>
-                        </div>
-                        <input type="text" id="reviewer-name" placeholder="Name (optional)" maxlength="30" style="width: 100%; padding: 5px 8px; background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 4px; color: #ffffff; font-size: 10px; margin-bottom: 6px; height: 28px;">
-                        <button id="submit-rating" style="width: 100%; padding: 8px; background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%); color: #1a1a1a; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer;">
-                            Submit
-                        </button>
-                        <p id="rating-message" style="margin-top: 8px; text-align: center; font-size: 11px; color: #4CAF50; display: none;"></p>
-                    </div>
+    <!-- Rating Section - Super Compact -->
+    <section style="background: #1a1a1a; padding: 25px 20px; border-top: 1px solid #2a2a2a;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <!-- Single Line Header with Rating -->
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px; color: #FFD700; font-weight: 700;" id="avg-rating-display">⭐ 4.8</span>
+                    <span style="color: #666; font-size: 13px;">•</span>
+                    <span style="color: #a0a0a0; font-size: 13px;"><span id="total-ratings">127</span> ratings</span>
+                </div>
+                <div class="star-rating" id="star-rating" style="font-size: 22px; cursor: pointer;">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
                 </div>
             </div>
 
-            <!-- Recent Reviews (Very Compact) -->
-            <div style="margin-top: 20px;">
-                <div id="reviews-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
-                    <!-- Reviews will be loaded here -->
+            <!-- Quick Submit (Hidden until rated) -->
+            <div id="rating-form" style="display: none; background: #2a2a2a; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="text" id="reviewer-name" placeholder="Name (optional)" maxlength="20" style="flex: 1; padding: 8px; background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 5px; color: #ffffff; font-size: 12px;">
+                    <button id="submit-rating" style="padding: 8px 20px; background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%); color: #1a1a1a; border: none; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap;">
+                        Submit
+                    </button>
+                </div>
+                <p id="rating-message" style="margin-top: 8px; text-align: center; font-size: 11px; color: #4CAF50; display: none;"></p>
+            </div>
+
+            <!-- 3 Latest Reviews + More Count -->
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <div id="reviews-container" style="display: flex; gap: 8px; flex: 1;">
+                    <!-- 3 reviews will be loaded here -->
+                </div>
+                <div id="more-reviews" style="background: #2a2a2a; padding: 12px 15px; border-radius: 6px; border: 1px solid #3a3a3a; text-align: center; white-space: nowrap;">
+                    <div style="color: #FFD700; font-size: 14px; font-weight: 700;">+<span id="more-count">1.1k</span></div>
+                    <div style="color: #666; font-size: 9px;">more</div>
                 </div>
             </div>
         </div>
@@ -1083,6 +1081,8 @@
             star.addEventListener('click', function() {
                 selectedRating = parseInt(this.dataset.rating);
                 updateStars(selectedRating);
+                // Show rating form when stars are clicked
+                document.getElementById('rating-form').style.display = 'block';
             });
 
             star.addEventListener('mouseover', function() {
@@ -1146,6 +1146,7 @@
             selectedRating = 0;
             updateStars(0);
             document.getElementById('reviewer-name').value = '';
+            document.getElementById('rating-form').style.display = 'none';
 
             // Update display
             updateRatingDisplay();
@@ -1171,23 +1172,22 @@
                 return;
             }
 
-            // Show latest 3 reviews on mobile, 6 on desktop
-            const reviewCount = window.innerWidth <= 768 ? 3 : 6;
-            const latestReviews = reviews.slice(0, reviewCount);
+            // Show only 3 latest reviews
+            const latestReviews = reviews.slice(0, 3);
             container.innerHTML = latestReviews.map(review => {
-                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-                const date = new Date(review.date);
-                const timeAgo = getTimeAgo(date);
-                
-                const isMobile = window.innerWidth <= 768;
+                const stars = '★'.repeat(review.rating);
                 return `
-                    <div style="background: #2a2a2a; padding: ${isMobile ? '10px' : '15px'}; border-radius: ${isMobile ? '6px' : '8px'}; border: 1px solid #3a3a3a;">
-                        <div style="color: #FFD700; font-size: ${isMobile ? '14px' : '16px'}; margin-bottom: ${isMobile ? '3px' : '5px'};">${stars}</div>
-                        <div style="color: #ffffff; font-weight: 600; font-size: ${isMobile ? '11px' : '14px'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(review.name)}</div>
-                        ${isMobile ? '' : `<div style="color: #666; font-size: 11px; margin-top: 3px;">${timeAgo}</div>`}
+                    <div style="flex: 1; background: #2a2a2a; padding: 12px 8px; border-radius: 6px; border: 1px solid #3a3a3a; text-align: center;">
+                        <div style="color: #FFD700; font-size: 14px; margin-bottom: 4px;">${stars}</div>
+                        <div style="color: #ffffff; font-weight: 600; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(review.name)}</div>
                     </div>
                 `;
             }).join('');
+            
+            // Update "more" count
+            const moreCount = reviews.length > 3 ? reviews.length - 3 : 0;
+            const moreDisplay = moreCount >= 1000 ? (moreCount / 1000).toFixed(1) + 'k' : moreCount;
+            document.getElementById('more-count').textContent = moreDisplay || '0';
         }
 
         // Update rating statistics
