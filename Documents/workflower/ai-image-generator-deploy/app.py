@@ -417,11 +417,16 @@ def about():
 
 @app.route('/ads.txt')
 def ads_txt():
-    """Redirect to Ezoic ads.txt manager"""
-    from flask import redirect
-    # Redirect to Ezoic's ads.txt management service
-    # This automatically manages and updates your ads.txt file
-    return redirect('https://srv.adstxtmanager.com/19390/unlimagen.com', code=301)
+    """Serve ads.txt file for Ezoic"""
+    from flask import Response
+    # Ezoic ads.txt - Replace with your actual publisher ID from Ezoic dashboard
+    ads_content = """# Ezoic Ads.txt
+# Once you get your publisher ID from Ezoic dashboard, replace the line below
+ezoic.com, pub-ezoicinccom, DIRECT
+ezoic.com, pub-ezoicinccom, RESELLER
+google.com, pub-9840848405074564, RESELLER, f08c47fec0942fa0
+"""
+    return Response(ads_content, mimetype='text/plain')
 
 if __name__ == '__main__':
     import os
