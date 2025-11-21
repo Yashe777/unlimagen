@@ -415,6 +415,18 @@ def about():
     """About page"""
     return render_template('about.html')
 
+@app.route('/ads.txt')
+def ads_txt():
+    """Serve ads.txt file for Ezoic"""
+    from flask import Response
+    # This will be updated with your Ezoic publisher ID
+    # You'll need to add your Ezoic line from their dashboard
+    ads_content = """# Ezoic Ads.txt
+# Add your Ezoic publisher line here from Step 2 in Ezoic dashboard
+# Example: ezoic.com, pub-XXXXXXXXXXXXX, DIRECT
+"""
+    return Response(ads_content, mimetype='text/plain')
+
 if __name__ == '__main__':
     import os
     
