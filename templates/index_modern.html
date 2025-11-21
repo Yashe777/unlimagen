@@ -642,9 +642,27 @@
                 grid-template-columns: 1fr !important;
             }
 
+            #reviews-row {
+                gap: 5px !important;
+                overflow-x: auto !important;
+            }
+
             #reviews-container {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 6px !important;
+                gap: 5px !important;
+                min-width: 0 !important;
+            }
+
+            #reviews-container > div {
+                min-width: 70px !important;
+            }
+
+            #more-reviews {
+                padding: 8px 10px !important;
+                flex-shrink: 0 !important;
+            }
+
+            #more-reviews > div:first-child {
+                font-size: 12px !important;
             }
         }
     </style>
@@ -869,7 +887,7 @@
             </div>
 
             <!-- 3 Latest Reviews + More Count -->
-            <div style="display: flex; gap: 8px; align-items: center;">
+            <div id="reviews-row" style="display: flex; gap: 8px; align-items: center;">
                 <div id="reviews-container" style="display: flex; gap: 8px; flex: 1;">
                     <!-- 3 reviews will be loaded here -->
                 </div>
