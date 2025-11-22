@@ -415,6 +415,21 @@ def about():
     """About page"""
     return render_template('about.html')
 
+@app.route('/blog')
+def blog():
+    """Blog and resources page"""
+    return render_template('blog.html')
+
+@app.route('/examples')
+def examples():
+    """Examples and inspiration page"""
+    return render_template('examples.html')
+
+@app.route('/guide')
+def guide():
+    """Complete guide page"""
+    return render_template('guide.html')
+
 @app.route('/ads.txt')
 def ads_txt():
     """Serve ads.txt file for Ezoic"""
