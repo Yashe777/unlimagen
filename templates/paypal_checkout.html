@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - {{ plan.name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .checkout-box {
+            background: #2a2a2a;
+            border: 2px solid #444444;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            color: #aaaaaa;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+
+        .feature {
+            padding: 10px 0;
+            color: #cccccc;
+        }
+
+        #paypal-button-container {
+            margin-top: 30px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #aaaaaa;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-box">
+        <h1>Complete Your Purchase</h1>
+        <p class="plan-name">{{ plan.name }}</p>
+        
+        <div class="price">${{ plan.price }}<span style="font-size: 20px; color: #888;">/month</span></div>
+        
+        <div class="features">
+            <div class="feature">✓ {% if plan.limit == -1 %}Unlimited{% else %}{{ plan.limit }}{% endif %} images per day</div>
+            <div class="feature">✓ Both AI models (☀️ Creative & 🌙 Imagine)</div>
+            <div class="feature">✓ All 5 image styles</div>
+            <div class="feature">✓ Cancel anytime</div>
+        </div>
+
+        <!-- PayPal Subscribe Button -->
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick-subscriptions">
+            <input type="hidden" name="business" value="{{ paypal_email }}">
+            <input type="hidden" name="item_name" value="{{ plan.name }}">
+            <input type="hidden" name="item_number" value="{{ plan_type }}">
+            <input type="hidden" name="a3" value="{{ plan.price }}">
+            <input type="hidden" name="p3" value="1">
+            <input type="hidden" name="t3" value="M">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="return" value="{{ request.url_root }}paypal-success?plan={{ plan_type }}">
+            <input type="hidden" name="cancel_return" value="{{ request.url_root }}pricing">
+            <input type="hidden" name="notify_url" value="{{ request.url_root }}paypal-ipn">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal Subscribe">
+        </form>
+
+        <div class="back-link">
+            <a href="/pricing">← Back to Pricing</a>
+        </div>
+    </div>
+</body>
+</html>

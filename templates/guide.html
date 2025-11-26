@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Guide to AI Image Generation - Unlimagen</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="Learn everything about AI image generation. Complete step-by-step guide to creating professional images with Unlimagen generator.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 50px;
+        }
+
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #D4D4DF;
+        }
+
+        .section h3 {
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+            color: #ffffff;
+        }
+
+        .section p {
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .section ul, .section ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .tip-box {
+            background: #0a0a0a;
+            border-left: 4px solid #D4D4DF;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box strong {
+            color: #D4D4DF;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link active">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>📖 Complete Guide to AI Image Generation</h1>
+        <p class="intro">Everything you need to know to create amazing AI-generated images</p>
+
+        <!-- Getting Started -->
+        <div class="section">
+            <h2>🚀 Getting Started</h2>
+            <p>Welcome to Unlimagen! Creating AI-generated images is easy and fun. Follow this guide to get the best results from our AI image generator.</p>
+            
+            <h3>What You Can Create:</h3>
+            <ul>
+                <li><strong>Photos:</strong> Realistic images that look like professional photography</li>
+                <li><strong>Digital Art:</strong> Artistic illustrations and creative designs</li>
+                <li><strong>3D Renders:</strong> Three-dimensional looking images with depth</li>
+                <li><strong>Anime/Cartoon:</strong> Stylized characters and scenes</li>
+                <li><strong>Abstract Art:</strong> Creative patterns and artistic compositions</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Start simple! Begin with basic descriptions and gradually add more details as you learn what works best.
+            </div>
+        </div>
+
+        <!-- Writing Prompts -->
+        <div class="section">
+            <h2>✍️ Writing Effective Prompts</h2>
+            <p>The prompt is your description of what you want to create. Good prompts lead to better results!</p>
+
+            <h3>Basic Prompt Structure:</h3>
+            <ol>
+                <li><strong>Subject:</strong> What is the main focus? (e.g., "mountain", "person", "dragon")</li>
+                <li><strong>Details:</strong> Add specific characteristics (colors, size, mood)</li>
+                <li><strong>Style:</strong> Specify the art style (photorealistic, cartoon, painting)</li>
+                <li><strong>Quality:</strong> Add quality keywords (detailed, high quality, professional)</li>
+            </ol>
+
+            <h3>Examples of Good Prompts:</h3>
+            <ul>
+                <li><strong>Bad:</strong> "a cat"</li>
+                <li><strong>Good:</strong> "cute orange cat sitting on a windowsill, soft lighting, photorealistic, detailed fur"</li>
+            </ul>
+
+            <ul>
+                <li><strong>Bad:</strong> "landscape"</li>
+                <li><strong>Good:</strong> "mountain landscape at sunset, dramatic clouds, golden hour lighting, photorealistic, detailed"</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Use descriptive adjectives! Words like "majestic", "vibrant", "serene", "dramatic" help the AI understand the mood you want.
+            </div>
+        </div>
+
+        <!-- Choosing Settings -->
+        <div class="section">
+            <h2>⚙️ Choosing the Right Settings</h2>
+            
+            <h3>AI Models:</h3>
+            <p>We offer two AI models with different characteristics:</p>
+            <ul>
+                <li><strong>☀️ Numidia Creative (RECOMMENDED):</strong> Lightning-fast generation (0.5-3 seconds). Uses Pollinations AI - consistently produces good quality results with reliable performance. This is our most reliable model.</li>
+                <li><strong>🌙 Numidia Imagine:</strong> Slower generation (30-60 seconds). Uses Stable Horde - quality can vary depending on available workers. Sometimes excellent, sometimes unpredictable. More experimental.</li>
+            </ul>
+            
+            <h3>Which Model Should I Choose?</h3>
+            <ul>
+                <li><strong>Choose Numidia Creative (☀️) if:</strong> You want consistent, reliable results (RECOMMENDED for most users). Fast and dependable.</li>
+                <li><strong>Choose Numidia Imagine (🌙) if:</strong> You're willing to wait longer and don't mind variable quality. Good when Creative is busy or for experimentation.</li>
+            </ul>
+            
+            <div class="tip-box" style="background: #2a2a2a; padding: 20px; border-radius: 10px; border-left: 4px solid #10b981; margin: 20px 0;">
+                <strong>💡 Honest Comparison:</strong> In practice, Numidia Creative (Pollinations) produces more consistent and reliable results than Numidia Imagine (Stable Horde). We recommend starting with Creative for best experience.
+            </div>
+            
+            <h3>Image Styles</h3>
+            <p>Both models support 5 professional image styles:</p>
+            <ul>
+                <li><strong>Realistic:</strong> Creates photorealistic images with professional photography quality</li>
+                <li><strong>Digital Art:</strong> Produces artistic and creative digital artwork with vibrant colors</li>
+                <li><strong>Illustration:</strong> Generates hand-drawn style illustrations, perfect for storytelling</li>
+                <li><strong>Painting:</strong> Creates oil/acrylic painting style images with brushstrokes and canvas texture</li>
+                <li><strong>3D Render:</strong> Produces 3D rendered images with realistic lighting and depth</li>
+            </ul>
+
+            <h3>Image Type:</h3>
+            <ul>
+                <li><strong>Photorealistic:</strong> Real-looking photos</li>
+                <li><strong>Digital Art:</strong> Modern artistic style</li>
+                <li><strong>3D Render:</strong> Three-dimensional appearance</li>
+                <li><strong>Illustration:</strong> Hand-drawn look</li>
+                <li><strong>Anime:</strong> Japanese animation style</li>
+            </ul>
+
+            <h3>Aspect Ratio:</h3>
+            <ul>
+                <li><strong>Square (1:1):</strong> Perfect for social media posts, profile pictures</li>
+                <li><strong>Landscape (16:9):</strong> Great for wallpapers, presentations, YouTube thumbnails</li>
+                <li><strong>Portrait (9:16):</strong> Ideal for phone wallpapers, Instagram stories</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Choose your aspect ratio based on where you'll use the image. Square works universally, but specific ratios look better in their intended context.
+            </div>
+        </div>
+
+        <!-- Advanced Techniques -->
+        <div class="section">
+            <h2>🎓 Advanced Techniques</h2>
+            
+            <h3>Adding Style Keywords:</h3>
+            <p>Enhance your prompts with these powerful keywords:</p>
+            <ul>
+                <li><strong>Quality:</strong> "detailed", "sharp", "clear", "well-defined"</li>
+                <li><strong>Lighting:</strong> "soft lighting", "dramatic lighting", "golden hour", "neon lights"</li>
+                <li><strong>Camera:</strong> "close-up", "wide angle", "aerial view", "bokeh effect"</li>
+                <li><strong>Mood:</strong> "peaceful", "epic", "mysterious", "cheerful", "dark"</li>
+                <li><strong>Art Style:</strong> "oil painting", "watercolor", "digital art", "sketch"</li>
+            </ul>
+
+            <h3>Combining Concepts:</h3>
+            <p>Create unique images by combining different ideas:</p>
+            <ul>
+                <li>"Cyberpunk city meets medieval castle"</li>
+                <li>"Cute cat dressed as a samurai warrior"</li>
+                <li>"Nature landscape in anime art style"</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Don't be afraid to be creative! The AI can combine concepts in surprising and beautiful ways.
+            </div>
+        </div>
+
+        <!-- Common Mistakes -->
+        <div class="section">
+            <h2>⚠️ Common Mistakes to Avoid</h2>
+            <ul>
+                <li><strong>Too Vague:</strong> "something cool" → Instead: "futuristic sports car with neon lights"</li>
+                <li><strong>Too Complex:</strong> Avoid prompts with 20+ different elements</li>
+                <li><strong>Conflicting Styles:</strong> Don't mix "photorealistic" with "cartoon style" in one prompt</li>
+                <li><strong>No Quality Keywords:</strong> Always add "high quality" or "detailed" for best results</li>
+                <li><strong>Wrong Aspect Ratio:</strong> Choose the ratio that fits your intended use</li>
+            </ul>
+        </div>
+
+        <!-- Use Cases -->
+        <div class="section">
+            <h2>💼 Popular Use Cases</h2>
+            
+            <h3>For Business:</h3>
+            <ul>
+                <li>Social media content and posts</li>
+                <li>Blog and website illustrations</li>
+                <li>Marketing materials and advertisements</li>
+                <li>Product concept visualization</li>
+                <li>Presentation backgrounds</li>
+            </ul>
+
+            <h3>For Creators:</h3>
+            <ul>
+                <li>YouTube thumbnails and channel art</li>
+                <li>Book covers and illustrations</li>
+                <li>Game concept art</li>
+                <li>Character designs</li>
+                <li>Story illustrations</li>
+            </ul>
+
+            <h3>For Personal Use:</h3>
+            <ul>
+                <li>Phone and desktop wallpapers</li>
+                <li>Profile pictures and avatars</li>
+                <li>Digital art for home decor</li>
+                <li>Custom greeting cards</li>
+                <li>Creative projects and hobbies</li>
+            </ul>
+        </div>
+
+        <!-- Tips & Tricks -->
+        <div class="section">
+            <h2>🌟 Tips & Tricks</h2>
+            <ul>
+                <li><strong>Experiment:</strong> Try different models and settings to see what works best</li>
+                <li><strong>Iterate:</strong> If results aren't perfect, refine your prompt and try again</li>
+                <li><strong>Save Favorites:</strong> Download images you like for future reference</li>
+                <li><strong>Learn from Examples:</strong> Check our Examples page for inspiration</li>
+                <li><strong>Be Specific:</strong> More details usually lead to better results</li>
+                <li><strong>Use References:</strong> Mention specific art styles or artists for style guidance</li>
+                <li><strong>Think Visually:</strong> Describe what you want to see, not abstract concepts</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Keep a collection of prompts that work well for you. You can reuse and modify them for future creations!
+            </div>
+        </div>
+
+        <!-- Getting Help -->
+        <div class="section">
+            <h2>🆘 Need Help?</h2>
+            <p>If you're having trouble or have questions:</p>
+            <ul>
+                <li>Check our <a href="/faq" style="color: #D4D4DF;">FAQ page</a> for common questions</li>
+                <li>Visit our <a href="/examples" style="color: #D4D4DF;">Examples page</a> for inspiration</li>
+                <li>Read our <a href="/blog" style="color: #D4D4DF;">Blog & Resources</a> for more tips</li>
+                <li>Contact us through our <a href="/contact" style="color: #D4D4DF;">Contact page</a></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

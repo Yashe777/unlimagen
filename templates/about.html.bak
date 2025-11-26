@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Unlimagen</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="About Unlimagen - Free AI Image Generator. Learn about our mission to provide unlimited AI-powered image generation for everyone.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #ffffff;
+            background: #0a0a0a;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #D4D4DF;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #a0a0a0;
+            font-size: 16px;
+        }
+
+        .feature-box {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #D4D4DF;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 212, 223, 0.2);
+        }
+
+        .feature-box h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            color: #a0a0a0;
+        }
+
+        ul {
+            margin: 20px 0 20px 30px;
+            color: #a0a0a0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: #a0a0a0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            color: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-box h2 {
+            color: #1a1a1a;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 40px;
+            background: #1a1a1a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .cta-box a:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Numidia AI" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link active">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>About Unlimagen</h1>
+        <p class="intro">Simple AI image generation with transparent pricing and honest service.</p>
+
+        <h2>🎨 Our Mission</h2>
+        <p>We believe that everyone should have access to powerful creative tools. Our mission is to make AI image generation accessible through a simple, honest platform with transparent pricing.</p>
+
+        <h2>✨ What We Offer</h2>
+        <div class="feature-box">
+            <h3>Flexible AI Image Generation</h3>
+            <p>Choose your plan: 3 free images daily, 50 images for $5/month, or unlimited for $9.99/month. Simple pricing, no hidden fees.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>Two Powerful AI Models</h3>
+            <p><strong>☀️ Numidia Creative:</strong> Lightning-fast generation (0.5-3 seconds) perfect for quick creative work and iterations.<br>
+            <strong>🌙 Numidia Imagine:</strong> Premium quality (30-60 seconds) ideal for detailed, high-quality artistic images.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>5 Professional Image Styles</h3>
+            <p>Choose from Realistic, Digital Art, Illustration, Painting, or 3D Render styles to match your creative vision perfectly.</p>
+        </div>
+
+        <h2>🚀 How It Works</h2>
+        <p><strong>Technology:</strong></p>
+        <p>Numidia AI connects you to two free, open-source AI image generation services:</p>
+        <ul>
+            <li><strong>Pollinations.ai</strong> - Powers our "Numidia Creative" model (fast, reliable)</li>
+            <li><strong>Stable Horde</strong> - Powers our "Numidia Imagine" model (variable quality)</li>
+        </ul>
+        <p style="margin-top: 20px;"><strong>What we provide:</strong> User-friendly interface, account management, payment processing, usage tracking, and customer support.</p>
+        <p style="margin-top: 20px;"><strong>To use our service, simply:</strong></p>
+        <ul>
+            <li>Enter a description of what you want to create</li>
+            <li>Choose your AI model (☀️ Creative for speed or 🌙 Imagine for quality)</li>
+            <li>Select your image style (Realistic, Digital Art, Illustration, Painting, or 3D Render)</li>
+            <li>Click generate and watch the magic happen!</li>
+            <li>Download your image and use it however you like</li>
+        </ul>
+
+        <h2>💡 Use Cases</h2>
+        <p>Our image generator is perfect for:</p>
+        <ul>
+            <li>Creating logos for your business or project</li>
+            <li>Generating artwork for social media</li>
+            <li>Designing unique graphics for presentations</li>
+            <li>Creating illustrations for blogs and websites</li>
+            <li>Exploring creative ideas and concepts</li>
+            <li>Educational and learning purposes</li>
+            <li>Personal creative projects</li>
+        </ul>
+
+        <h2>🌟 Why Choose Unlimagen?</h2>
+        <ul>
+            <li><strong>Free Tier:</strong> 10 images per day to try the service</li>
+            <li><strong>Clear Pricing:</strong> $5/month (50/day) or $9.99/month (unlimited) - cancel anytime</li>
+            <li><strong>No Technical Setup:</strong> Use powerful AI models without dealing with APIs</li>
+            <li><strong>User Accounts:</strong> Track your usage and manage subscriptions</li>
+            <li><strong>Simple Interface:</strong> Just type what you want and generate</li>
+            <li><strong>Transparent:</strong> We tell you exactly what you're getting</li>
+        </ul>
+
+        <h2>🤝 Our Commitment</h2>
+        <p>We are committed to:</p>
+        <ul>
+            <li>Clear communication about our service</li>
+            <li>Fair pricing with no hidden fees</li>
+            <li>Reliable access to AI image generation</li>
+            <li>Keeping the interface simple and easy to use</li>
+            <li>Quick customer support (mr.oudesign@gmail.com)</li>
+        </ul>
+
+        <h2>📧 Get in Touch</h2>
+        <p>Have questions, feedback, or suggestions? We'd love to hear from you! Visit our <a href="/contact">Contact Page</a> to get in touch.</p>
+
+        <div class="cta-box">
+            <h2>Ready to Create?</h2>
+            <p>Start generating images now - 10 free images daily, or upgrade for more!</p>
+            <a href="/">Start Creating →</a>
+        </div>
+    </div>
+</body>
+</html>

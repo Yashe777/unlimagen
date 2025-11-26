@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples & Inspiration - Unlimagen AI Image Generator</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="Get inspired by amazing AI-generated images. See examples and ideas for creating your own stunning visuals with Unlimagen.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 50px;
+        }
+
+        .category {
+            margin-bottom: 60px;
+        }
+
+        .category h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #D4D4DF;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .example-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 212, 223, 0.2);
+        }
+
+        .example-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .prompt {
+            background: #0a0a0a;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 15px;
+            color: #a0a0a0;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #2a2a2a;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #D4D4DF;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link active">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>🎨 Examples & Inspiration</h1>
+        <p class="intro">Get inspired by these example prompts and create your own stunning AI images!</p>
+
+        <!-- Category: Landscapes -->
+        <div class="category">
+            <h2>🌄 Landscapes & Nature</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Mountain Sunset</h3>
+                    <div class="prompt">"Majestic mountain range at golden hour sunset, dramatic clouds, photorealistic, detailed"</div>
+                    <div class="tags">
+                        <span class="tag">Photorealistic</span>
+                        <span class="tag">Nature</span>
+                        <span class="tag">Sunset</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Tropical Beach</h3>
+                    <div class="prompt">"Crystal clear turquoise water, white sand beach, palm trees, blue sky, paradise island, realistic photo"</div>
+                    <div class="tags">
+                        <span class="tag">Beach</span>
+                        <span class="tag">Tropical</span>
+                        <span class="tag">Realistic</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Forest Path</h3>
+                    <div class="prompt">"Mystical forest path with sunlight filtering through trees, morning mist, fantasy atmosphere, detailed"</div>
+                    <div class="tags">
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Forest</span>
+                        <span class="tag">Mystical</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category: Characters & Portraits -->
+        <div class="category">
+            <h2>👤 Characters & Portraits</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Fantasy Warrior</h3>
+                    <div class="prompt">"Epic fantasy warrior with armor, dramatic lighting, digital art style, detailed character design"</div>
+                    <div class="tags">
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Character</span>
+                        <span class="tag">Digital Art</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Cyberpunk Portrait</h3>
+                    <div class="prompt">"Futuristic cyberpunk character, neon lights, rain, city background, cinematic, high tech style"</div>
+                    <div class="tags">
+                        <span class="tag">Cyberpunk</span>
+                        <span class="tag">Futuristic</span>
+                        <span class="tag">Neon</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Cute Anime Character</h3>
+                    <div class="prompt">"Cute anime girl with colorful hair, kawaii style, big eyes, cheerful expression, vibrant colors"</div>
+                    <div class="tags">
+                        <span class="tag">Anime</span>
+                        <span class="tag">Cute</span>
+                        <span class="tag">Colorful</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category: Animals -->
+        <div class="category">
+            <h2>🐾 Animals & Creatures</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Majestic Lion</h3>
+                    <div class="prompt">"Majestic lion portrait, golden mane, powerful gaze, wildlife photography, professional, high detail"</div>
+                    <div class="tags">
+                        <span class="tag">Wildlife</span>
+                        <span class="tag">Photography</span>
+                        <span class="tag">Realistic</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Fantasy Dragon</h3>
+                    <div class="prompt">"Epic fantasy dragon flying over mountains, scales glowing, fire breathing, detailed fantasy art"</div>
+                    <div class="tags">
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Dragon</span>
+                        <span class="tag">Epic</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Cute Pet</h3>
+                    <div class="prompt">"Adorable fluffy kitten with big eyes, playful, soft lighting, cute pet photography style"</div>
+                    <div class="tags">
+                        <span class="tag">Pet</span>
+                        <span class="tag">Cute</span>
+                        <span class="tag">Photography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category: Abstract & Artistic -->
+        <div class="category">
+            <h2>🎭 Abstract & Artistic</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Abstract Colors</h3>
+                    <div class="prompt">"Abstract flowing colors, vibrant gradients, smooth transitions, modern digital art, wallpaper"</div>
+                    <div class="tags">
+                        <span class="tag">Abstract</span>
+                        <span class="tag">Colorful</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Geometric Art</h3>
+                    <div class="prompt">"Geometric patterns, minimalist design, clean lines, pastel colors, modern art style"</div>
+                    <div class="tags">
+                        <span class="tag">Geometric</span>
+                        <span class="tag">Minimalist</span>
+                        <span class="tag">Clean</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Watercolor Art</h3>
+                    <div class="prompt">"Beautiful watercolor painting, soft colors, artistic brush strokes, dreamy atmosphere, traditional art"</div>
+                    <div class="tags">
+                        <span class="tag">Watercolor</span>
+                        <span class="tag">Artistic</span>
+                        <span class="tag">Soft</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category: Architecture & Interiors -->
+        <div class="category">
+            <h2>🏛️ Architecture & Interiors</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Modern Living Room</h3>
+                    <div class="prompt">"Modern minimalist living room, white walls, natural light, plants, cozy atmosphere, interior design"</div>
+                    <div class="tags">
+                        <span class="tag">Interior</span>
+                        <span class="tag">Modern</span>
+                        <span class="tag">Minimalist</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Futuristic Building</h3>
+                    <div class="prompt">"Futuristic skyscraper architecture, glass and steel, innovative design, city skyline, photorealistic"</div>
+                    <div class="tags">
+                        <span class="tag">Architecture</span>
+                        <span class="tag">Futuristic</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Cozy Coffee Shop</h3>
+                    <div class="prompt">"Cozy coffee shop interior, warm lighting, wooden furniture, plants, inviting atmosphere, detailed"</div>
+                    <div class="tags">
+                        <span class="tag">Interior</span>
+                        <span class="tag">Cozy</span>
+                        <span class="tag">Warm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Unlimagen</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="Frequently Asked Questions about Unlimagen AI Image Generator. Find answers to common questions.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: #D4D4DF;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .intro {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            color: #1a1a1a;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p class="intro">Find answers to common questions about Unlimagen and our image generation service.</p>
+
+        <div class="faq-item">
+            <div class="faq-question">What is Unlimagen?</div>
+            <div class="faq-answer">
+                Unlimagen is an AI image generation platform that provides convenient access to two AI models: 
+                <strong>Numidia Creative</strong> (powered by Pollinations.ai) and <strong>Numidia Imagine</strong> (powered by Stable Horde). 
+                We offer a simple interface with user accounts and flexible pricing plans - from 3 free images daily to unlimited generation.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What do I pay for with subscriptions?</div>
+            <div class="faq-answer">
+                <strong>Here's the reality:</strong> We use free AI services (Pollinations.ai & Stable Horde). Your subscription pays for:<br>
+                • Higher usage limits (3/day free, 50/day basic, unlimited pro)<br>
+                • User account & history storage<br>
+                • Clean interface without technical setup<br>
+                • Payment processing<br>
+                • Customer support<br><br>
+                <strong>Important:</strong> All plans get the same image quality - we don't control the AI, only the usage limits.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Do you own the AI models?</div>
+            <div class="faq-answer">
+                <strong>No.</strong> We provide convenient access to two third-party services: Pollinations.ai (Numidia Creative) and Stable Horde (Numidia Imagine). We don't own, train, or control these AI models. We're a convenience layer with user accounts and payment handling.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need to create an account?</div>
+            <div class="faq-answer">
+                No account is required. You can start generating images immediately without signing up or providing any personal information.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I generate an image?</div>
+            <div class="faq-answer">
+                Simply type a description of the image you want in the text box, select your preferred AI model and settings, then click "Generate Image". The AI will create your image in seconds.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What kind of images can I create?</div>
+            <div class="faq-answer">
+                You can create various types of images including 3D renders, photorealistic images, digital art, illustrations, anime-style art, abstract art, paintings, and minimalist designs.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I download the generated images?</div>
+            <div class="faq-answer">
+                Yes! Once your image is generated, you can download it directly to your device by clicking the "Download Image" button.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I use the generated images commercially?</div>
+            <div class="faq-answer">
+                The images are generated for your use. However, AI-generated content may have limitations on copyright protection depending on your jurisdiction. Please review our Terms of Service for more details.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How long does it take to generate an image?</div>
+            <div class="faq-answer">
+                Most images are generated within a few seconds, depending on the AI model you choose and server load. Our Speed Model is the fastest option.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What AI models does Unlimagen offer?</div>
+            <div class="faq-answer">
+                <strong>We provide access to two third-party AI models:</strong><br><br>
+                <strong>☀️ Numidia Creative (Recommended)</strong><br>
+                • Powered by Pollinations.ai<br>
+                • Speed: 0.5-3 seconds (very fast)<br>
+                • Quality: Consistent and reliable<br>
+                • Best for: Most users, quick results<br><br>
+                
+                <strong>🌙 Numidia Imagine</strong><br>
+                • Powered by Stable Horde<br>
+                • Speed: 30-60 seconds (slower)<br>
+                • Quality: Variable, sometimes better, sometimes inconsistent<br>
+                • Best for: When Creative is busy, experimentation<br><br>
+                
+                <strong>Comparison:</strong> Numidia Creative produces more reliable results.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What image styles are available?</div>
+            <div class="faq-answer">
+                We offer 5 professional image styles:<br>
+                • <strong>Realistic:</strong> Photorealistic images<br>
+                • <strong>Digital Art:</strong> Artistic and creative styles<br>
+                • <strong>Illustration:</strong> Hand-drawn illustration style<br>
+                • <strong>Painting:</strong> Oil/acrylic painting style<br>
+                • <strong>3D Render:</strong> 3D rendered images
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Are there any limits on image generation?</div>
+            <div class="faq-answer">
+                No! You can generate unlimited images. There are no daily limits or restrictions.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do you store my images?</div>
+            <div class="faq-answer">
+                No. We do not permanently store your generated images or text prompts. Images are generated in real-time and displayed directly in your browser.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What if my image doesn't look right?</div>
+            <div class="faq-answer">
+                Try rephrasing your description, being more specific, or switching to a different AI model. Different prompts and settings can produce very different results.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I generate inappropriate content?</div>
+            <div class="faq-answer">
+                No. We prohibit the generation of illegal, harmful, violent, hateful, or sexually explicit content. Please use our service responsibly and review our Terms of Service.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is Unlimagen available on mobile?</div>
+            <div class="faq-answer">
+                Yes! Our website is fully responsive and works perfectly on mobile devices, tablets, and desktops.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How can I contact support?</div>
+            <div class="faq-answer">
+                If you have questions or issues, please visit our <a href="/contact" style="color: #1a1a1a; font-weight: 600;">Contact page</a>.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

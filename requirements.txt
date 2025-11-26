@@ -1,0 +1,4 @@
+Flask==3.0.0
+requests
+pillow
+gunicorn==21.2.0

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Unlimagen</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="Contact Unlimagen - Get in touch with us for support, feedback, or business inquiries.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #1a1a1a;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+            border: 1px solid #2a2a2a;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .contact-item p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+
+        .contact-item a {
+            color: #D4D4DF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: #2a2a2a;
+            border-left: 4px solid #D4D4DF;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .info-box h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #a0a0a0;
+            margin: 5px 0;
+        }
+
+        .info-box a {
+            color: #D4D4DF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-box a:hover {
+            color: #ffffff;
+        }
+
+        .contact-form {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a1a1a;
+            border: 2px solid #3a3a3a;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4D4DF;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            color: #1a1a1a;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 212, 223, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link active">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="subtitle">We'd love to hear from you! Get in touch with us for any questions, feedback, or support.</p>
+
+        <form action="https://formspree.io/f/mrbddkoo" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required placeholder="What is this about?">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Your message..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:unlimagener@gmail.com">unlimagener@gmail.com</a></p>
+            </div>
+
+            <div class="contact-item">
+            </div>
+
+            <div class="contact-item">
+                <h3>⚡ Response Time</h3>
+                <p>We typically respond within 24-48 hours</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>What can we help you with?</h3>
+            <p>• Technical support and troubleshooting</p>
+            <p>• Questions about our service</p>
+            <p>• Feedback and suggestions</p>
+            <p>• Report inappropriate content</p>
+            <p>• Business inquiries and partnerships</p>
+            <p>• Privacy and data concerns</p>
+        </div>
+
+        <div class="info-box" style="background: #2a2a2a; border-left-color: #D4D4DF; margin-top: 20px;">
+            <h3 style="color: #ffffff;">Before Contacting Us</h3>
+            <p>For faster assistance, please check:</p>
+            <p>• <a href="/privacy">Privacy Policy</a> - Information about data handling</p>
+            <p>• <a href="/terms">Terms of Service</a> - Service usage guidelines</p>
+            <p>• <a href="/faq">FAQ</a> - Frequently asked questions</p>
+        </div>
+    </div>
+</body>
+</html>

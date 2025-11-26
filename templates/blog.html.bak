@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Resources - Unlimagen AI Image Generator</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2764902678566880" crossorigin="anonymous"></script>
+    
+    <!-- Google Consent Mode (for GDPR compliance) -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-2764902678566880?ers=1" nonce="CONSENT-NONCE"></script>
+    <script nonce="CONSENT-NONCE">(function() {function signalGooglefcPresent() {if (!window.frames["googlefcPresent"]) {if (document.body) {const iframe = document.createElement("iframe"); iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;"; iframe.style.display = "none"; iframe.name = "googlefcPresent"; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+    <meta name="description" content="Learn how to create amazing AI-generated images. Tips, tutorials, and guides for using Unlimagen AI image generator.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .article-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 212, 223, 0.2);
+        }
+
+        .article-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .article-card p {
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .article-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .article-card li {
+            color: #a0a0a0;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .article-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #D4D4DF;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4D4DF 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: transform 0.3s;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #2a2a2a;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: #3a3a3a;
+            color: #D4D4DF;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" class="logo" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px; vertical-align: middle;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link active">Resources ▼</a>
+                <div class="dropdown-content">
+                    <a href="/guide">Complete Guide</a>
+                    <a href="/examples">Examples</a>
+                    <a href="/blog">Blog & Tips</a>
+                </div>
+            </div>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>💡 Tips & Resources</h1>
+        <p class="intro">Honest tips for getting the best results from Unlimagen's AI image generation.</p>
+
+        <div class="articles-grid">
+            <!-- Article 1 -->
+            <div class="article-card">
+                <h2>✅ What Actually Works</h2>
+                <p>Honest tips for getting good results with Unlimagen (powered by Pollinations & Stable Horde).</p>
+                <ul>
+                    <li><strong>Keep it simple:</strong> "sunset", "cat", "mountain" work better than complex descriptions</li>
+                    <li><strong>Use Numidia Creative:</strong> It's faster and more consistent than Imagine</li>
+                    <li><strong>Don't expect perfection:</strong> These are free AI models - quality varies</li>
+                    <li><strong>Regenerate if needed:</strong> Results differ each time</li>
+                    <li><strong>Skip "8k" or "4k":</strong> Resolution is fixed at 1024x1024</li>
+                </ul>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="article-card">
+                <h2>🚀 What Unlimagen Can and Cannot Do</h2>
+                <p>Be realistic about what free AI models can deliver.</p>
+                <ul>
+                    <li>Good for: Quick concepts, social media, personal projects</li>
+                    <li>Not ideal for: Professional logos, commercial work, print</li>
+                    <li>Quality varies - regenerate if needed</li>
+                    <li>Download and save your favorite results</li>
+                </ul>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="article-card">
+                <h2>💡 Creative Use Cases for AI Images</h2>
+                <p>Discover how businesses and creators are using AI-generated images in their work.</p>
+                <ul>
+                    <li>Social media content and posts</li>
+                    <li>Blog and article illustrations</li>
+                    <li>Product mockups and concepts</li>
+                    <li>Marketing materials and ads</li>
+                    <li>Website backgrounds and graphics</li>
+                </ul>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="article-card">
+                <h2>🎯 Numidia Creative vs Imagine</h2>
+                <p>Understanding the differences between our AI models and when to use each one.</p>
+                <ul>
+                    <li><strong>Numidia Creative:</strong> Pollinations.ai - Fast (0.5-3s), consistent</li>
+                    <li><strong>Numidia Imagine:</strong> Stable Horde - Slow (30-60s), variable quality</li>
+                    <li>Our honest opinion: Creative is more reliable</li>
+                    <li>Use Imagine only for experimentation</li>
+                </ul>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="article-card">
+                <h2>✨ Advanced Prompt Techniques</h2>
+                <p>Take your prompts to the next level with these professional tips and tricks.</p>
+                <ul>
+                    <li>Use negative prompts to avoid unwanted elements</li>
+                    <li>Combine multiple concepts creatively</li>
+                    <li>Reference art styles and famous artists</li>
+                    <li>Specify technical camera settings</li>
+                    <li>Iterate and refine based on results</li>
+                </ul>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="article-card">
+                <h2>🌟 Common Mistakes to Avoid</h2>
+                <p>Learn from others' mistakes and improve your AI image generation success rate.</p>
+                <ul>
+                    <li>Don't make prompts too vague or too complex</li>
+                    <li>Avoid conflicting style instructions</li>
+                    <li>Remember to specify image quality</li>
+                    <li>Test different approaches if results aren't perfect</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

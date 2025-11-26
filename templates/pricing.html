@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Numidia AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #aaaaaa;
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: #2a2a2a;
+            border: 2px solid #444444;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #666666;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-card.popular {
+            border: 3px solid #e0e7ff;
+            background: linear-gradient(135deg, #2a2a3a 0%, #3a3a4a 100%);
+            box-shadow: 0 4px 20px rgba(224, 231, 255, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            color: #1e293b;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .plan-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .plan-price span {
+            font-size: 20px;
+            color: #aaaaaa;
+        }
+
+        .plan-desc {
+            color: #aaaaaa;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .feature {
+            padding: 12px 0;
+            border-bottom: 1px solid #3a3a3a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #444444;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #555555;
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            color: #1e293b;
+            box-shadow: 0 4px 12px rgba(224, 231, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(224, 231, 255, 0.7);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-link a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-link a:hover {
+            color: #ffffff;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-link:hover {
+            color: #D4D4DF;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: #1a1a1a;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .mobile-menu-items {
+            padding: 20px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 15px 10px;
+            border-bottom: 1px solid #2a2a2a;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-link:hover {
+            color: #D4D4DF;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .top-bar {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pricing-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 35px;">
+        </a>
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/pricing" class="nav-link" style="color: #D4D4DF;">Pricing</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <img src="/static/unlimagen-complete-logo.png" alt="Unlimagen" style="height: 30px;">
+            <button class="mobile-menu-close" id="mobile-menu-close">×</button>
+        </div>
+        <div class="mobile-menu-items">
+            <a href="/" class="mobile-nav-link">Home</a>
+            <a href="/pricing" class="mobile-nav-link" style="color: #D4D4DF;">Pricing</a>
+            <a href="/about" class="mobile-nav-link">About</a>
+            <a href="/contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Simple, Transparent Pricing</h1>
+        <p class="subtitle">Choose the plan that fits your needs</p>
+        
+        <div style="background: #2a2a2a; border: 2px solid #444444; border-radius: 15px; padding: 20px; margin: 30px auto; max-width: 800px; text-align: left;">
+            <h3 style="color: #ffffff; margin-bottom: 15px;">⚖️ Important: What You're Paying For</h3>
+            <p style="color: #cccccc; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+                <strong style="color: #ffffff;">All plans use the same free AI models (Pollinations.ai & Stable Horde).</strong>
+            </p>
+            <p style="color: #aaaaaa; font-size: 14px; line-height: 1.6;">
+                Your subscription pays for <strong>usage limits only</strong>, not better AI quality. 
+                We provide the convenience of a simple interface, user accounts, and payment handling. 
+                You're paying for convenience and higher daily limits, not the underlying AI technology.
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Free</div>
+                <div class="plan-price">$0<span>/month</span></div>
+                <div class="plan-desc">Perfect for trying out</div>
+                
+                <div class="features">
+                    <div class="feature">✓ 10 images per day</div>
+                    <div class="feature" style="font-size: 12px; color: #888; margin-top: 8px;">Both AI models included</div>
+                </div>
+
+                <a href="/" class="btn">Start Creating Free</a>
+            </div>
+
+            <!-- Basic Plan -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">BEST VALUE</div>
+                <div class="plan-name">Basic</div>
+                <div class="plan-price">$5<span>/month</span></div>
+                <div class="plan-desc">For regular creators</div>
+                
+                <div class="features">
+                    <div class="feature">✓ 50 images per day</div>
+                </div>
+
+                <form action="/create-checkout-session" method="POST">
+                    <input type="hidden" name="price_id" value="basic">
+                    <button type="submit" class="btn btn-primary">Get Basic</button>
+                </form>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card">
+                <div class="plan-name">Pro</div>
+                <div class="plan-price">$9.99<span>/month</span></div>
+                <div class="plan-desc">Unlimited creativity</div>
+                
+                <div class="features">
+                    <div class="feature">✓ Unlimited images</div>
+                </div>
+
+                <form action="/create-checkout-session" method="POST">
+                    <input type="hidden" name="price_id" value="pro">
+                    <button type="submit" class="btn btn-primary">Get Pro</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← Back to Generator</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    </script>
+</body>
+</html>
