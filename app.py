@@ -172,7 +172,6 @@ def generate_with_miragic(prompt, seed=None):
 
 def generate_with_pollinations(prompt, seed=None, model='flux'):
     """Generate using Pollinations.AI - Completely FREE! Multiple endpoints for load balancing"""
-    import random as rand
     try:
         # Add seed for variation - this ensures different images
         if seed is None:
@@ -189,7 +188,7 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
         ]
         
         # Randomly select endpoint to distribute requests across servers
-        url = rand.choice(endpoints)
+        url = random.choice(endpoints)
         
         print(f"Generating with Pollinations.AI (seed: {seed}, endpoint: {url.split('/')[2]})...")
         print(f"Full Prompt: {prompt[:100]}...")
