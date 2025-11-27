@@ -1400,12 +1400,14 @@
                             showLimitModal();
                         }
                     } else {
-                        alert('Failed to generate images. Please try again.');
+                        // Show the actual error message from the server
+                        const errorMsg = data.error || 'Failed to generate images. Please try again.';
+                        alert(errorMsg);
                     }
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                alert('⚠️ Connection error. Please check your internet and try again.');
             } finally {
                 loading.style.display = 'none';
                 generateBtn.disabled = false;
