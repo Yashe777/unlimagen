@@ -177,18 +177,11 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
         if seed is None:
             seed = random.randint(1, 999999)
         
-        # Pollinations.AI - Multiple endpoints to rotate and bypass rate limits
+        # Pollinations.AI - Use the main working endpoint
         encoded_prompt = quote(prompt)
         
-        # Different endpoint formats to distribute load
-        endpoints = [
-            f"https://image.pollinations.ai/prompt/{encoded_prompt}?seed={seed}",
-            f"https://pollinations.ai/p/{encoded_prompt}?seed={seed}",
-            f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1024&height=1024&seed={seed}",
-        ]
-        
-        # Randomly select endpoint to distribute requests across servers
-        url = random.choice(endpoints)
+        # Use the reliable endpoint (others were causing redirects and failures)
+        url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?seed={seed}&width=1024&height=1024&nologo=true"
         
         print(f"Generating with Pollinations.AI (seed: {seed}, endpoint: {url.split('/')[2]})...")
         print(f"Full Prompt: {prompt[:100]}...")
