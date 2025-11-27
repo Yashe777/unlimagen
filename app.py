@@ -202,11 +202,23 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
             image_base64 = base64.b64encode(image_bytes).decode('utf-8')
             print("✅ Success with full prompt!")
             return f"data:image/jpeg;base64,{image_base64}"
+        elif response.status_code == 429:
+            # Rate limit hit
+            raise Exception("⏱️ Numidia Creative is currently experiencing high demand. Please try again in a moment, or switch to Numidia Imagine for instant results!")
+        elif response.status_code >= 500:
+            # Server error
+            raise Exception("🔧 Numidia Creative is temporarily unavailable due to high traffic. Please try Numidia Imagine instead!")
         else:
-            raise Exception(f"HTTP {response.status_code}")
+            raise Exception(f"⚠️ Numidia Creative is busy (Error {response.status_code}). Please try Numidia Imagine for better availability!")
             
+    except requests.exceptions.Timeout:
+        raise Exception("⏱️ Numidia Creative is experiencing high demand and timed out. Please switch to Numidia Imagine for faster generation!")
+    except requests.exceptions.RequestException as e:
+        raise Exception("🔧 Numidia Creative is currently overloaded. Please try Numidia Imagine instead!")
     except Exception as e:
-        raise Exception(f"Pollinations.AI error: {str(e)}")
+        if "429" in str(e) or "rate" in str(e).lower():
+            raise Exception("⏱️ Numidia Creative is experiencing high demand. Please try Numidia Imagine for instant results!")
+        raise Exception(f"⚠️ Numidia Creative is temporarily unavailable. Please try Numidia Imagine instead!")
 
 def generate_with_stable_horde(prompt, seed=None):
     """Generate using Stable Horde - BEST for complex prompts with premium quality!"""
