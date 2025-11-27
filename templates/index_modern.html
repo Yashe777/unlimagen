@@ -1389,21 +1389,22 @@
 
                 const data = await response.json();
 
+                // Check for rate limit (HTTP 429) or other limit errors
+                if (response.status === 429 || data.limit_reached) {
+                    if (data.need_signup) {
+                        showSignupModal();
+                    } else {
+                        showLimitModal();
+                    }
+                    return; // Stop here
+                }
+
                 if (data.success) {
                     displayLogos(data.logos);
                 } else {
-                    // Check if it's a limit error
-                    if (data.limit_reached) {
-                        if (data.need_signup) {
-                            showSignupModal();
-                        } else {
-                            showLimitModal();
-                        }
-                    } else {
-                        // Show the actual error message from the server
-                        const errorMsg = data.error || 'Failed to generate images. Please try again.';
-                        alert(errorMsg);
-                    }
+                    // Show the actual error message from the server
+                    const errorMsg = data.error || 'Failed to generate images. Please try again.';
+                    alert(errorMsg);
                 }
             } catch (error) {
                 console.error('Error:', error);
