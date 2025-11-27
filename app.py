@@ -491,15 +491,21 @@ def generate_free_ai():
             
             # Generate based on selected model - ONLY pollinations and stable-horde
             if model == 'pollinations':
-                image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
-                model_name = 'Numidia Creative'
+                try:
+                    image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
+                    model_name = 'Numidia Creative'
+                except Exception as poll_error:
+                    # Pollinations failed - automatically fallback to Stable Horde
+                    print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
+                    image_data = generate_with_stable_horde(prompt, seed=seed)
+                    model_name = 'Numidia Imagine (Auto-Fallback)'
             elif model == 'stable-horde':
                 image_data = generate_with_stable_horde(prompt, seed=seed)
                 model_name = 'Numidia Imagine'
             else:
-                # Default to pollinations for any unknown model
-                image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
-                model_name = 'Numidia Creative'
+                # Default to stable-horde for reliability
+                image_data = generate_with_stable_horde(prompt, seed=seed)
+                model_name = 'Numidia Imagine'
             
             if image_data:
                 # Increment usage counter
