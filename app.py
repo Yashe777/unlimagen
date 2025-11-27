@@ -157,7 +157,7 @@ def generate_with_miragic(prompt, seed=None):
         print(f"Generating with Miragic AI style (seed: {seed})...")
         print(f"Full Prompt: {enhanced_prompt[:100]}...")
         
-        response = requests.get(url, timeout=90)
+        response = requests.get(url, timeout=30)
         
         if response.status_code == 200:
             image_bytes = response.content
@@ -186,7 +186,7 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
         print(f"Full Prompt: {prompt[:100]}...")
         print(f"URL: {url[:120]}...")
         
-        response = requests.get(url, timeout=90)
+        response = requests.get(url, timeout=30)
         
         if response.status_code == 200:
             # Convert to base64
@@ -310,7 +310,7 @@ def generate_with_wan25(prompt, seed=None):
         print(f"Generating with Turbo AI (seed: {seed})...")
         print(f"Full Prompt: {prompt[:100]}...")
         
-        response = requests.get(url, timeout=90)
+        response = requests.get(url, timeout=30)
         
         if response.status_code == 200:
             # Convert to base64
