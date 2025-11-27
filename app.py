@@ -535,9 +535,18 @@ def generate_free_ai():
             print(f"❌ Error: {error_msg}\n")
     
     if not logos:
+        # Create a user-friendly error message based on the model used
+        selected_model = data.get('model', 'pollinations')
+        if selected_model == 'pollinations':
+            error_message = '⏱️ Numidia Creative is currently experiencing high demand. Please switch to Numidia Imagine (🌙) for instant results!'
+        elif selected_model == 'stable-horde':
+            error_message = '⚠️ Generation failed. Please try again or adjust your prompt.'
+        else:
+            error_message = 'Failed to generate images. Please try again with a different model.'
+        
         return jsonify({
             'success': False,
-            'error': 'Failed to generate any images',
+            'error': error_message,
             'details': errors
         }), 500
     
