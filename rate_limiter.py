@@ -63,9 +63,24 @@ class RateLimiter:
     def increment(self, ip_address, user_id=None):
         """Increment usage count"""
         key = self.get_user_key(ip_address, user_id)
-        if key in self.data:
-            self.data[key]['count'] += 1
-            self.save_data()
+        today = datetime.now().strftime('%Y-%m-%d')
+        
+        # Create entry if it doesn't exist
+        if key not in self.data:
+            self.data[key] = {
+                'count': 0,
+                'date': today,
+                'tier': 'free'
+            }
+        
+        # Reset if it's a new day
+        if self.data[key]['date'] != today:
+            self.data[key]['count'] = 0
+            self.data[key]['date'] = today
+        
+        # Increment count
+        self.data[key]['count'] += 1
+        self.save_data()
     
     def get_usage(self, ip_address, user_id=None):
         """Get current usage"""
