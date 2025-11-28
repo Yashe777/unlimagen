@@ -1399,12 +1399,19 @@
                 });
 
                 const data = await response.json();
+                
+                // Debug logging
+                console.log('Response status:', response.status);
+                console.log('Response data:', data);
 
                 // Check for rate limit (HTTP 429) or other limit errors
                 if (response.status === 429 || data.limit_reached) {
+                    console.log('Limit reached! need_signup:', data.need_signup);
                     if (data.need_signup) {
+                        console.log('Showing signup modal...');
                         showSignupModal();
                     } else {
+                        console.log('Showing limit modal...');
                         showLimitModal();
                     }
                     return; // Stop here

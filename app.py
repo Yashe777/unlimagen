@@ -462,15 +462,6 @@ def generate_free_ai():
         can_generate = True
         remaining = -1
     
-    if not can_generate:
-        return jsonify({
-            'success': False,
-            'error': 'Daily limit reached',
-            'message': 'You have reached your daily limit of 10 images. Upgrade to generate more!',
-            'limit_reached': True,
-            'upgrade_url': '/pricing'
-        }), 429
-    
     logos = []
     errors = []
     
