@@ -462,6 +462,9 @@ def generate_free_ai():
         can_generate = True
         remaining = -1
     
+    # Increment usage counter ONCE before generating (so limit check works correctly next time)
+    rate_limiter.increment(ip_address, user_id=user_email)
+    
     logos = []
     errors = []
     
@@ -471,9 +474,6 @@ def generate_free_ai():
     
     for i in range(count):
         try:
-            # Increment usage counter BEFORE generating (so limit check works correctly next time)
-            rate_limiter.increment(ip_address, user_id=user_email)
-            
             # Create prompt with variation and background style
             prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
             
