@@ -553,9 +553,9 @@ def generate_free_ai():
     
     return jsonify({
         'success': True,
-        'logos': logos,
+        'images': logos,
         'errors': errors if errors else None,
-        'message': f'Generated {len(logos)} FREE AI logos using {model_name}'
+        'message': f'Generated {len(logos)} FREE AI images using {model_name}'
     })
 
 @app.route('/api/models')
