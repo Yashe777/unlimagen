@@ -69,6 +69,33 @@
             margin-top: 30px;
         }
 
+        /* Custom PayPal Subscribe Button */
+        .custom-paypal-btn {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            border: 2px solid #e0e7ff;
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(224, 231, 255, 0.3), inset 0 1px 3px rgba(224, 231, 255, 0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .custom-paypal-btn:hover {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+            box-shadow: 0 6px 20px rgba(224, 231, 255, 0.5), inset 0 1px 3px rgba(224, 231, 255, 0.3);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .custom-paypal-btn:active {
+            transform: translateY(0);
+        }
+
         .back-link {
             margin-top: 20px;
         }
@@ -110,7 +137,9 @@
             <input type="hidden" name="return" value="{{ request.url_root }}paypal-success?plan={{ plan_type }}">
             <input type="hidden" name="cancel_return" value="{{ request.url_root }}pricing">
             <input type="hidden" name="notify_url" value="{{ request.url_root }}paypal-ipn">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal Subscribe">
+            <button type="submit" class="custom-paypal-btn">
+                💳 Subscribe with PayPal
+            </button>
         </form>
 
         <div class="back-link">
