@@ -799,3 +799,20 @@ if __name__ == '__main__':
         print("="*60 + "\n")
     
     app.run(debug=not is_production, host='0.0.0.0', port=port)
+
+@app.route('/api/version')
+def api_version():
+    """Check deployed version"""
+    import subprocess
+    try:
+        git_hash = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).decode('utf-8').strip()
+    except:
+        git_hash = 'unknown'
+    
+    return jsonify({
+        'version': 'v2.0',
+        'git_commit': git_hash,
+        'anonymous_limit': 3,
+        'free_limit': 10,
+        'deployment_check': 'If you see git_commit c97df6f then latest code is deployed'
+    })
