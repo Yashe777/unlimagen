@@ -1231,29 +1231,30 @@
             });
         });
 
-        // Show signup modal for non-logged users
+        // Show signup modal for non-logged users (after 3 free trial images)
         function showSignupModal() {
             const modal = document.createElement('div');
             modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 10000;';
             
             modal.innerHTML = `
                 <div style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); padding: 50px 40px; border-radius: 20px; max-width: 500px; text-align: center; border: 2px solid #e0e7ff; box-shadow: 0 10px 40px rgba(224, 231, 255, 0.3);">
-                    <div style="font-size: 64px; margin-bottom: 20px;">🎨</div>
-                    <h2 style="font-size: 32px; margin-bottom: 20px; color: #ffffff;">You've Used Your 10 Free Images!</h2>
+                    <div style="font-size: 64px; margin-bottom: 20px;">🎁</div>
+                    <h2 style="font-size: 32px; margin-bottom: 20px; color: #ffffff;">You've Used Your 3 Free Trial Images!</h2>
                     <p style="font-size: 18px; color: #aaaaaa; margin-bottom: 30px;">
-                        Create a free account to track your usage and get 10 more images tomorrow!<br>
-                        Upgrade to Basic (50/day) or Pro (unlimited) plans.
+                        Sign up for <strong style="color: #e0e7ff;">FREE</strong> and get <strong style="color: #e0e7ff;">10 images daily</strong>!<br>
+                        Plus, upgrade anytime for 50/day or unlimited images.
                     </p>
                     <div style="margin: 30px 0; padding: 20px; background: #1a1a1a; border-radius: 10px; border: 1px solid #444;">
-                        <div style="font-size: 14px; color: #888; margin-bottom: 10px;">You just used:</div>
-                        <div style="font-size: 24px; font-weight: 700; color: #ffffff;">10 FREE images (IP-based)</div>
+                        <div style="font-size: 14px; color: #888; margin-bottom: 10px;">Trial images used:</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #ffffff;">3 FREE trial images</div>
+                        <div style="font-size: 14px; color: #4CAF50; margin-top: 10px;">✨ Sign up to get 10 images daily!</div>
                     </div>
                     <a href="/signup" style="display: inline-block; padding: 18px 40px; background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%); color: #1e293b; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 18px; margin: 10px;">
-                        Sign Up Free →
+                        Sign Up for FREE (10 Daily Images) →
                     </a>
                     <br>
                     <a href="/pricing" style="display: inline-block; padding: 12px 30px; background: transparent; color: #aaaaaa; border: 2px solid #444; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; margin: 10px;">
-                        View Pricing Plans
+                        View All Pricing Plans
                     </a>
                     <button onclick="this.closest('div').parentElement.remove()" style="display: block; margin: 20px auto 0; padding: 12px 30px; background: transparent; color: #666666; border: none; cursor: pointer; font-size: 14px;">
                         Close

@@ -428,9 +428,9 @@ def generate_free_ai():
         tier = user['plan'] if user else 'free'
         daily_limit = user['daily_limit'] if user else 10
     else:
-        # Not logged in - use IP-based free tier
-        tier = 'free'
-        daily_limit = 10
+        # Not logged in - use IP-based anonymous tier (3 free images)
+        tier = 'anonymous'
+        daily_limit = 3
     
     # Check if user can generate
     if daily_limit != -1:  # -1 means unlimited
@@ -439,11 +439,11 @@ def generate_free_ai():
         if not can_generate:
             # Check if user is logged in
             if not user_email:
-                # Not logged in - ask to sign up
+                # Not logged in - ask to sign up for 10 daily images
                 return jsonify({
                     'success': False,
                     'error': 'Daily limit reached',
-                    'message': 'You have reached your daily limit of 10 free images. Sign up to track your usage and upgrade for more!',
+                    'message': 'You have used your 3 free trial images! Sign up for FREE to get 10 images daily!',
                     'limit_reached': True,
                     'need_signup': True,
                     'signup_url': '/signup'

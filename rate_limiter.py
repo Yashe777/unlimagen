@@ -9,7 +9,8 @@ class RateLimiter:
     def __init__(self):
         self.storage_file = 'usage_data.json'
         self.limits = {
-            'free': 10,      # 10 per day
+            'anonymous': 3,  # 3 per day for non-signed up users
+            'free': 10,      # 10 per day for signed up users
             'basic': 50,     # 50 per day
             'pro': -1        # unlimited
         }
