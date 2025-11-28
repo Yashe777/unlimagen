@@ -436,6 +436,9 @@ def generate_free_ai():
     if daily_limit != -1:  # -1 means unlimited
         can_generate, remaining = rate_limiter.check_limit(ip_address, user_id=user_email, tier=tier)
         
+        # Debug logging
+        print(f"[RATE LIMIT CHECK] IP: {ip_address}, User: {user_email}, Tier: {tier}, Can Generate: {can_generate}, Remaining: {remaining}")
+        
         if not can_generate:
             # Check if user is logged in
             if not user_email:
@@ -464,6 +467,8 @@ def generate_free_ai():
     
     # Increment usage counter ONCE before generating (so limit check works correctly next time)
     rate_limiter.increment(ip_address, user_id=user_email)
+    new_count = rate_limiter.get_usage(ip_address, user_id=user_email)
+    print(f"[COUNTER INCREMENTED] IP: {ip_address}, User: {user_email}, New Count: {new_count}")
     
     logos = []
     errors = []
