@@ -617,10 +617,7 @@ def faq():
 
 @app.route('/pricing')
 def pricing():
-    """Pricing page - redirect to signup if not logged in"""
-    if not session.get('user_email'):
-        # User not logged in - redirect to signup with message
-        return redirect(url_for('signup') + '?message=signup_required')
+    """Pricing page - let everyone view it"""
     return render_template('pricing.html')
 
 @app.route('/create-checkout-session', methods=['POST'])

@@ -388,10 +388,14 @@
                     <div class="feature">✓ 50 images per day</div>
                 </div>
 
+                {% if session.get('user_email') %}
                 <form action="/create-checkout-session" method="POST">
                     <input type="hidden" name="price_id" value="basic">
                     <button type="submit" class="btn btn-primary">Get Basic</button>
                 </form>
+                {% else %}
+                <a href="/signup?plan=basic" class="btn btn-primary">Get Basic</a>
+                {% endif %}
             </div>
 
             <!-- Pro Plan -->
@@ -404,10 +408,14 @@
                     <div class="feature">✓ Unlimited images</div>
                 </div>
 
+                {% if session.get('user_email') %}
                 <form action="/create-checkout-session" method="POST">
                     <input type="hidden" name="price_id" value="pro">
                     <button type="submit" class="btn btn-primary">Get Pro</button>
                 </form>
+                {% else %}
+                <a href="/signup?plan=pro" class="btn btn-primary">Get Pro</a>
+                {% endif %}
             </div>
         </div>
 
