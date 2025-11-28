@@ -92,6 +92,12 @@
     <div class="auth-box">
         <h1>Create Account</h1>
         
+        <!-- Message for users redirected from pricing page -->
+        <div id="pricing-message" style="display: none; background: #1e3a8a; color: #ffffff; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+            <strong>🎯 Sign up first to choose your plan!</strong><br>
+            <span style="font-size: 14px;">Create a free account, then you can upgrade to any plan.</span>
+        </div>
+        
         {% if error %}
         <div class="error">{{ error }}</div>
         {% endif %}
@@ -123,5 +129,13 @@
             <a href="/">← Back to home</a>
         </div>
     </div>
+    
+    <script>
+        // Show message if user was redirected from pricing page
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('message') === 'signup_required') {
+            document.getElementById('pricing-message').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
