@@ -471,6 +471,9 @@ def generate_free_ai():
     
     for i in range(count):
         try:
+            # Increment usage counter BEFORE generating (so limit check works correctly next time)
+            rate_limiter.increment(ip_address, user_id=user_email)
+            
             # Create prompt with variation and background style
             prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
             
@@ -499,8 +502,6 @@ def generate_free_ai():
                 model_name = 'Numidia Imagine'
             
             if image_data:
-                # Increment usage counter
-                rate_limiter.increment(ip_address, user_id=user_email)
                 
                 logos.append({
                     'url': image_data,
