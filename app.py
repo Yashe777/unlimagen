@@ -3,7 +3,7 @@ Free AI Logo Generator - FIXED VERSION
 Uses Pollinations.AI - completely free, no API key needed!
 """
 
-from flask import Flask, render_template, request, jsonify, redirect, session
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
 import random
 import colorsys
 import requests
