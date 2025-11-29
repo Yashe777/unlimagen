@@ -478,7 +478,21 @@ def generate_free_ai():
     print(f"Generating {count} FREE AI logos for: {company_name}")
     print(f"{'='*60}\n")
     
-    # Submit jobs to queue instead of processing immediately
+    # Define generation function OUTSIDE the loop
+    def generate_single_image(prompt, seed, model_type):
+        """Wrapper function for queue processing"""
+        if model_type == 'pollinations':
+            try:
+                return generate_with_pollinations(prompt, seed=seed, model='flux'), 'Numidia Creative'
+            except Exception as poll_error:
+                print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
+                return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine (Auto-Fallback)'
+        elif model_type == 'stable-horde':
+            return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine'
+        else:
+            return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine'
+    
+    # Submit jobs to queue
     job_ids = []
     for i in range(count):
         # Create prompt with variation and background style
@@ -490,22 +504,8 @@ def generate_free_ai():
         print(f"Logo {i+1}/{count}:")
         print(f"Prompt: {prompt[:80]}...")
         
-        # Define generation function based on model
-        def generate_image_for_queue(p=prompt, s=seed, m=model):
-            """Wrapper function for queue processing"""
-            if m == 'pollinations':
-                try:
-                    return generate_with_pollinations(p, seed=s, model='flux'), 'Numidia Creative'
-                except Exception as poll_error:
-                    print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
-                    return generate_with_stable_horde(p, seed=s), 'Numidia Imagine (Auto-Fallback)'
-            elif m == 'stable-horde':
-                return generate_with_stable_horde(p, seed=s), 'Numidia Imagine'
-            else:
-                return generate_with_stable_horde(p, seed=s), 'Numidia Imagine'
-        
         # Submit to queue
-        job_id = generation_queue.submit(generate_image_for_queue, p=prompt, s=seed, m=model)
+        job_id = generation_queue.submit(generate_single_image, prompt, seed, model)
         job_ids.append((job_id, prompt, i))
     
     # Wait for all jobs to complete
