@@ -7,24 +7,39 @@ __pycache__/
 env/
 venv/
 ENV/
-*.egg-info/
-.eggs/
-dist/
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Flask
-instance/
-.webassets-cache
+# Database files
+*.db
+*.db-journal
+users.json
+usage_data.json
+*.backup*
 
 # Environment
 .env
-.flaskenv
+.env.local
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store

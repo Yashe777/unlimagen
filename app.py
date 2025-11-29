@@ -10,8 +10,9 @@ import requests
 import base64
 from datetime import datetime
 from urllib.parse import quote
-from rate_limiter import rate_limiter
-from database import db
+from rate_limiter_sqlite import rate_limiter
+from database_sqlite import db
+from generation_queue import generation_queue
 import os
 
 app = Flask(__name__)
@@ -477,37 +478,43 @@ def generate_free_ai():
     print(f"Generating {count} FREE AI logos for: {company_name}")
     print(f"{'='*60}\n")
     
+    # Submit jobs to queue instead of processing immediately
+    job_ids = []
     for i in range(count):
-        try:
-            # Create prompt with variation and background style
-            prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
-            
-            # Generate unique seed for this logo
-            seed = random.randint(1, 999999)
-            
-            print(f"Logo {i+1}/{count}:")
-            print(f"Prompt: {prompt[:80]}...")
-            
-            # Generate based on selected model - ONLY pollinations and stable-horde
-            if model == 'pollinations':
+        # Create prompt with variation and background style
+        prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
+        
+        # Generate unique seed for this logo
+        seed = random.randint(1, 999999)
+        
+        print(f"Logo {i+1}/{count}:")
+        print(f"Prompt: {prompt[:80]}...")
+        
+        # Define generation function based on model
+        def generate_image_for_queue(p=prompt, s=seed, m=model):
+            """Wrapper function for queue processing"""
+            if m == 'pollinations':
                 try:
-                    image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
-                    model_name = 'Numidia Creative'
+                    return generate_with_pollinations(p, seed=s, model='flux'), 'Numidia Creative'
                 except Exception as poll_error:
-                    # Pollinations failed - automatically fallback to Stable Horde
                     print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
-                    image_data = generate_with_stable_horde(prompt, seed=seed)
-                    model_name = 'Numidia Imagine (Auto-Fallback)'
-            elif model == 'stable-horde':
-                image_data = generate_with_stable_horde(prompt, seed=seed)
-                model_name = 'Numidia Imagine'
+                    return generate_with_stable_horde(p, seed=s), 'Numidia Imagine (Auto-Fallback)'
+            elif m == 'stable-horde':
+                return generate_with_stable_horde(p, seed=s), 'Numidia Imagine'
             else:
-                # Default to stable-horde for reliability
-                image_data = generate_with_stable_horde(prompt, seed=seed)
-                model_name = 'Numidia Imagine'
+                return generate_with_stable_horde(p, seed=s), 'Numidia Imagine'
+        
+        # Submit to queue
+        job_id = generation_queue.submit(generate_image_for_queue, p=prompt, s=seed, m=model)
+        job_ids.append((job_id, prompt, i))
+    
+    # Wait for all jobs to complete
+    for job_id, prompt, i in job_ids:
+        try:
+            success, result = generation_queue.get_result(job_id, timeout=120)
             
-            if image_data:
-                
+            if success:
+                image_data, model_name = result
                 logos.append({
                     'url': image_data,
                     'prompt': prompt,
@@ -521,8 +528,9 @@ def generate_free_ai():
                 })
                 print(f"✅ Logo {i+1} completed!\n")
             else:
-                errors.append(f"Failed to generate logo {i+1}")
-                print(f"❌ Logo {i+1} failed\n")
+                error_msg = result
+                errors.append(f"Error generating logo {i+1}: {error_msg}")
+                print(f"❌ Logo {i+1} failed: {error_msg}\n")
                 
         except Exception as e:
             error_msg = str(e)
@@ -815,9 +823,29 @@ def api_version():
         git_hash = 'unknown'
     
     return jsonify({
-        'version': 'v2.0',
+        'version': 'v2.1',
         'git_commit': git_hash,
         'anonymous_limit': 3,
         'free_limit': 10,
-        'deployment_check': 'If you see git_commit c97df6f then latest code is deployed'
+        'deployment_check': 'SQLite database + request queue enabled'
+    })
+
+@app.route('/health')
+def health():
+    """Health check endpoint"""
+    return jsonify({
+        'status': 'healthy',
+        'database': 'sqlite',
+        'queue_size': generation_queue.get_queue_size(),
+        'queue_workers': generation_queue.max_workers,
+        'timestamp': datetime.now().isoformat()
+    })
+
+@app.route('/api/queue-status')
+def queue_status():
+    """Get current queue status"""
+    return jsonify({
+        'queue_size': generation_queue.get_queue_size(),
+        'max_workers': generation_queue.max_workers,
+        'status': 'operational'
     })
