@@ -12,7 +12,6 @@ from datetime import datetime
 from urllib.parse import quote
 from rate_limiter_sqlite import rate_limiter
 from database_sqlite import db
-from generation_queue import generation_queue
 import os
 
 app = Flask(__name__)
@@ -478,43 +477,38 @@ def generate_free_ai():
     print(f"Generating {count} FREE AI logos for: {company_name}")
     print(f"{'='*60}\n")
     
-    # Define generation function OUTSIDE the loop
-    def generate_single_image(prompt, seed, model_type):
-        """Wrapper function for queue processing"""
-        if model_type == 'pollinations':
-            try:
-                return generate_with_pollinations(prompt, seed=seed, model='flux'), 'Numidia Creative'
-            except Exception as poll_error:
-                print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
-                return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine (Auto-Fallback)'
-        elif model_type == 'stable-horde':
-            return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine'
-        else:
-            return generate_with_stable_horde(prompt, seed=seed), 'Numidia Imagine'
-    
-    # Submit jobs to queue
-    job_ids = []
+    # Generate images directly (no queue)
     for i in range(count):
-        # Create prompt with variation and background style
-        prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
-        
-        # Generate unique seed for this logo
-        seed = random.randint(1, 999999)
-        
-        print(f"Logo {i+1}/{count}:")
-        print(f"Prompt: {prompt[:80]}...")
-        
-        # Submit to queue
-        job_id = generation_queue.submit(generate_single_image, prompt, seed, model)
-        job_ids.append((job_id, prompt, i))
-    
-    # Wait for all jobs to complete
-    for job_id, prompt, i in job_ids:
         try:
-            success, result = generation_queue.get_result(job_id, timeout=120)
+            # Create prompt with variation and background style
+            prompt = create_logo_prompt(company_name, style, industry, color_scheme, variation=i, background=background)
             
-            if success:
-                image_data, model_name = result
+            # Generate unique seed for this logo
+            seed = random.randint(1, 999999)
+            
+            print(f"Logo {i+1}/{count}:")
+            print(f"Prompt: {prompt[:80]}...")
+            
+            # Generate based on selected model - ONLY pollinations and stable-horde
+            if model == 'pollinations':
+                try:
+                    image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
+                    model_name = 'Numidia Creative'
+                except Exception as poll_error:
+                    # Pollinations failed - automatically fallback to Stable Horde
+                    print(f"⚠️ Pollinations failed, trying Stable Horde as fallback...")
+                    image_data = generate_with_stable_horde(prompt, seed=seed)
+                    model_name = 'Numidia Imagine (Auto-Fallback)'
+            elif model == 'stable-horde':
+                image_data = generate_with_stable_horde(prompt, seed=seed)
+                model_name = 'Numidia Imagine'
+            else:
+                # Default to stable-horde for reliability
+                image_data = generate_with_stable_horde(prompt, seed=seed)
+                model_name = 'Numidia Imagine'
+            
+            if image_data:
+                
                 logos.append({
                     'url': image_data,
                     'prompt': prompt,
@@ -528,9 +522,8 @@ def generate_free_ai():
                 })
                 print(f"✅ Logo {i+1} completed!\n")
             else:
-                error_msg = result
-                errors.append(f"Error generating logo {i+1}: {error_msg}")
-                print(f"❌ Logo {i+1} failed: {error_msg}\n")
+                errors.append(f"Failed to generate logo {i+1}")
+                print(f"❌ Logo {i+1} failed\n")
                 
         except Exception as e:
             error_msg = str(e)
@@ -836,16 +829,5 @@ def health():
     return jsonify({
         'status': 'healthy',
         'database': 'sqlite',
-        'queue_size': generation_queue.get_queue_size(),
-        'queue_workers': generation_queue.max_workers,
         'timestamp': datetime.now().isoformat()
-    })
-
-@app.route('/api/queue-status')
-def queue_status():
-    """Get current queue status"""
-    return jsonify({
-        'queue_size': generation_queue.get_queue_size(),
-        'max_workers': generation_queue.max_workers,
-        'status': 'operational'
     })
