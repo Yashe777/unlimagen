@@ -3,7 +3,7 @@ services:
     name: unlimagen
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 2 --threads 2 --worker-class gthread
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 300 --workers 4 --threads 4 --worker-class gthread
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.18
