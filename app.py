@@ -12,6 +12,7 @@ from datetime import datetime
 from urllib.parse import quote
 from rate_limiter_sqlite import rate_limiter
 from database_sqlite import db
+from simple_queue_v2 import simple_queue
 import os
 
 app = Flask(__name__)
@@ -421,8 +422,18 @@ def generate_free_ai():
     background = data.get('background', 'natural')  # background style
     
     # Rate limiting based on user plan
-    ip_address = request.remote_addr
+    # Get IP from behind proxy/load balancer
+    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
     user_email = session.get('user_email')
+    
+    # Create unique browser session ID (persistent across refreshes)
+    if 'browser_id' not in session:
+        import uuid
+        session['browser_id'] = str(uuid.uuid4())
+    
+    # Combine IP + browser session ID for anonymous users (prevents refresh bypass)
+    browser_id = session['browser_id']
+    unique_identifier = f"{ip_address}_{browser_id}" if not user_email else None
     
     # Get user's plan
     if user_email:
@@ -430,9 +441,11 @@ def generate_free_ai():
         tier = user['plan'] if user else 'free'
         daily_limit = user['daily_limit'] if user else 10
     else:
-        # Not logged in - use IP-based anonymous tier (3 free images)
+        # Not logged in - use IP+browser session for anonymous tier (3 free images)
         tier = 'anonymous'
         daily_limit = 3
+        # Override ip_address with combined identifier for anonymous users
+        ip_address = unique_identifier
     
     # Check if user can generate
     if daily_limit != -1:  # -1 means unlimited
@@ -789,6 +802,20 @@ ezoic.com, pub-ezoicinccom, RESELLER
 google.com, pub-9840848405074564, RESELLER, f08c47fec0942fa0
 """
     return Response(ads_content, mimetype='text/plain')
+
+# Simple Queue API (no threading - Render safe)
+@app.route('/api/simple-queue/stats')
+def simple_queue_stats():
+    """Get simple queue stats"""
+    return jsonify({'success': True, 'stats': simple_queue.get_stats()})
+
+@app.route('/api/simple-queue/status/<job_id>')
+def simple_queue_status(job_id):
+    """Get job status"""
+    status = simple_queue.get_job_status(job_id)
+    if not status:
+        return jsonify({'success': False, 'error': 'Job not found'}), 404
+    return jsonify({'success': True, 'job': status})
 
 if __name__ == '__main__':
     import os
