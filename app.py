@@ -180,13 +180,14 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
         # Pollinations.AI - Use the main working endpoint
         encoded_prompt = quote(prompt)
         
-        # Use the reliable endpoint (others were causing redirects and failures)
+        # Use the reliable endpoint with increased timeout (Pollinations can be slow during high traffic)
         url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?seed={seed}&width=1024&height=1024&nologo=true"
         
-        print(f"Generating with Pollinations.AI (seed: {seed}, endpoint: {url.split('/')[2]})...")
+        print(f"Generating with Pollinations.AI (seed: {seed})...")
         print(f"Full Prompt: {prompt[:100]}...")
         
-        response = requests.get(url, timeout=30)
+        # Increased timeout to 90 seconds (Pollinations can take 30-60s during peak times)
+        response = requests.get(url, timeout=90)
         
         if response.status_code == 200:
             # Convert to base64
