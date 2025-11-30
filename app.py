@@ -186,8 +186,8 @@ def generate_with_pollinations(prompt, seed=None, model='flux'):
         print(f"Generating with Pollinations.AI (seed: {seed})...")
         print(f"Full Prompt: {prompt[:100]}...")
         
-        # Increased timeout to 90 seconds (Pollinations can take 30-60s during peak times)
-        response = requests.get(url, timeout=90)
+        # 60 second timeout
+        response = requests.get(url, timeout=60)
         
         if response.status_code == 200:
             # Convert to base64
@@ -254,7 +254,7 @@ def generate_with_stable_horde(prompt, seed=None):
         print(f"🎨 Submitting to Stable Horde (premium quality)...")
         print(f"Prompt: {prompt[:80]}...")
         
-        response = requests.post(submit_url, json=payload, headers=headers, timeout=30)
+        response = requests.post(submit_url, json=payload, headers=headers, timeout=60)
         
         if response.status_code not in [200, 202]:
             raise Exception(f"Submission failed: {response.status_code}")
@@ -269,7 +269,7 @@ def generate_with_stable_horde(prompt, seed=None):
         
         # Poll for result
         check_url = f"https://stablehorde.net/api/v2/generate/check/{request_id}"
-        max_wait = 90
+        max_wait = 60  # 60 second max wait
         start_time = time.time()
         
         while time.time() - start_time < max_wait:
@@ -289,7 +289,7 @@ def generate_with_stable_horde(prompt, seed=None):
                         if generations and len(generations) > 0:
                             image_url = generations[0].get("img")
                             if image_url:
-                                img_response = requests.get(image_url, timeout=30)
+                                img_response = requests.get(image_url, timeout=60)
                                 if img_response.status_code == 200:
                                     image_bytes = img_response.content
                                     image_base64 = base64.b64encode(image_bytes).decode('utf-8')
@@ -297,6 +297,7 @@ def generate_with_stable_horde(prompt, seed=None):
                     
                     raise Exception("Could not retrieve generated image")
                 
+                # Wait time between checks (back to original)
                 wait_time = check_data.get("wait_time", 5)
                 time.sleep(min(wait_time, 5))
             else:
@@ -501,8 +502,14 @@ def generate_free_ai():
                     image_data = generate_with_stable_horde(prompt, seed=seed)
                     model_name = 'Numidia Imagine (Auto-Fallback)'
             elif model == 'stable-horde':
-                image_data = generate_with_stable_horde(prompt, seed=seed)
-                model_name = 'Numidia Imagine'
+                try:
+                    image_data = generate_with_stable_horde(prompt, seed=seed)
+                    model_name = 'Numidia Imagine'
+                except Exception as horde_error:
+                    # Stable Horde failed - automatically fallback to Pollinations
+                    print(f"⚠️ Stable Horde failed, trying Pollinations as fallback...")
+                    image_data = generate_with_pollinations(prompt, seed=seed, model='flux')
+                    model_name = 'Numidia Creative (Auto-Fallback)'
             else:
                 # Default to stable-horde for reliability
                 image_data = generate_with_stable_horde(prompt, seed=seed)
